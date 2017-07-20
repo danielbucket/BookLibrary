@@ -1,0 +1,44 @@
+.because-grid {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.book-cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.book-card {
+  border: 1px solid blue;
+  width: 19%;
+  height: 250px;
+  margin: 2px;
+}
+
+.book-title {
+  font-size: 18px;
+  height: 40px;
+}
+
+.book-author-text {
+  margin: auto;
+}
+
+.render-multiple {
+  text-overflow: ellipsis;
+  border: 1px solid red;
+
+}
+
+.authors-list {
+  /*text-overflow: fade(5%);*/
+  height: 30px;
+  width: 100%;
+
+}

@@ -1,5 +1,14 @@
 .header-container {
-  height: 100px;
+  font-family: cochin;
+  height: 150px;
   width: 100%;
-  background-color: lightblue;
+  background-color: rgba(139,87,42,86);
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-bucket-logo {
+  width: 150px;
+  background-color: red;
 }

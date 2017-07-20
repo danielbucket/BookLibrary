@@ -1,8 +1,14 @@
-import React from 'react';
+import React    from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App      from './App';
+import               './index.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const history = createBrowserHistory()
+
+ReactDOM.render(
+  <Router history={ history }>
+    <Route path='/' render={ () => <App /> } />
+  </Router>
+  , document.getElementById('root'))

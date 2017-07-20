@@ -1,0 +1,7 @@
+.search-results-container {
+  width: 95%;
+  height: 500px;
+  background-color: rgb(151,151,151,100);
+  margin: 0 auto;
+  margin-top: 10px;
+}

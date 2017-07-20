@@ -5,6 +5,9 @@ import                             './App.css';
 import  { getGoogleBooksAPI } from './fetches/fetchCalls';
 import  { renderMultiple,
           genericFetch }      from './assets/helpers';
+import  { bookStub }          from './assets/bookStub';
+import  { Route, Link }       from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
@@ -20,6 +23,12 @@ class App extends Component {
     this.genericFetch = genericFetch.bind(this)
   }
 
+  // componentDidMount(){
+  //   this.setState({
+  //     searchResults: bookStub.items
+  //   })
+  // }
+
   fetchBooks(query) {
     this.setState({
       query: query,
@@ -30,10 +39,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header fetchBooks={ this.fetchBooks }/>
-
-        <Main searchResults={ this.state.searchResults }
-              />
+        <Header fetchBooks={ this.fetchBooks } />
+        <Main searchResults={ this.state.searchResults } />
       </div>
     )
   }
