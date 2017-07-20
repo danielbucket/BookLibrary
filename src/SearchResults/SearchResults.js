@@ -1,8 +1,10 @@
 import React from 'react';
+import { renderMultiple } from '../assets/helpers';
 
-const SearchResults = ({ books, renderMultiple, genericFetch }) => {
+const SearchResults = ({ searchResults }) => {
+  console.log('searchResults: ' , searchResults)
 
-  const query = books.map( i => {
+  const query = searchResults.map( i => {
     const { volumeInfo } = i
     return (
       <div>

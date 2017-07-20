@@ -5,26 +5,27 @@ export default class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isbn: ''
+      searchFor: ''
     }
     this.onChange = this.onChange.bind(this)
   }
 
   onChange(e) {
     this.setState({
-      isbn: e.target.value
+      searchFor: e.target.value
     })
   }
 
-
   render() {
-    const { submitQuery } = this.props
     return (
       <div>
         <h3>Books</h3>
-        <input  value={ this.state.isbn }
+        <input  value={ this.state.searchFor }
                 onChange={e => this.onChange(e) }/>
-        <button onClick={() => submitQuery(this.state.isbn) }>Submit</button>
+
+        <button onClick={ () => {
+          this.props.fetchBooks(this.state.searchFor)
+        } }>Submit</button>
       </div>
     )
   }

@@ -6,4 +6,5 @@ export const getGoogleBooksAPI = (query, mainState) => {
       searchResults: bookData.items
     })
   })
+  .catch(error => console.log('Error fetching books', error))
 }

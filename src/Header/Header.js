@@ -1,11 +1,15 @@
-import React from 'react';
-import            './Header.css';
+import    React   from 'react';
+import    Search  from '../Search/Search';
+import                 './Header.css';
 
-const Header = ({headerText}) => {
+const Header = ({ fetchBooks }) => {
 
   return (
-    <div>{headerText}</div>
+    <div>
+      <Search fetchBooks={ fetchBooks }/>
+    </div>
   )
+
 }
 
 export default Header;
