@@ -1,12 +1,12 @@
-import React, { Component }   from 'react';
-import Header                 from './Header/Header';
-import Main                   from './Main/Main';
-import                             './App.css';
-import  { getGoogleBooksAPI } from './fetches/fetchCalls';
+import    React, { Component }  from 'react';
+import    Header                from './Header/Header';
+import    Main                  from './Main/Main';
+import                               './App.css';
+import  { getGoogleBooksAPI }   from './fetches/fetchCalls';
 import  { renderMultiple,
-          genericFetch }      from './assets/helpers';
-import  { bookStub }          from './assets/bookStub';
-import  { Route, Link }       from 'react-router-dom';
+          genericFetch }        from './assets/helpers';
+import  { bookStub }            from './assets/bookStub';
+import  { Route, Link }         from 'react-router-dom';
 
 
 class App extends Component {
@@ -14,20 +14,23 @@ class App extends Component {
     super()
     this.state = {
       query: '',
-      searchResults: []
+      searchResults: [],
+      userState: {
+        loginState: true,
+        userLibrary: []
+      }
     }
     this.getGoogleBooksAPI = getGoogleBooksAPI.bind(this)
     this.fetchBooks = this.fetchBooks.bind(this)
     this.renderMultiple = renderMultiple.bind(this)
     // how do I make fetch calls for images???
-    this.genericFetch = genericFetch.bind(this)
   }
 
-  // componentDidMount(){
-  //   this.setState({
-  //     searchResults: bookStub.items
-  //   })
-  // }
+  componentDidMount(){
+    this.setState({
+      searchResults: bookStub.items
+    })
+  }
 
   fetchBooks(query) {
     this.setState({
@@ -40,7 +43,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header fetchBooks={ this.fetchBooks } />
-        <Main searchResults={ this.state.searchResults } />
+        <Main searchResults={ this.state.searchResults }
+                 logInState={ this.state.logInState } />
       </div>
     )
   }

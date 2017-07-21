@@ -7,14 +7,14 @@ const SearchResults = ({ searchResults, lookAtBook }) => {
   const query = searchResults.map( i => {
     const { volumeInfo } = i
     return (
-      <Link to={`${i.id}`} >
+      <Link to={`/main/${i.id}`} >
         <div className='book-card'
                     id={ i.id }
                     onClick={ () => { lookAtBook(i) } }>
           <h2 className="book-title">{ volumeInfo.title }</h2>
           <div className="book-author-text">Author:
             <span className='authors-list'>
-              { renderMultiple(volumeInfo.authors) }
+              { renderMultiple(volumeInfo.authors,'authors-container, author-item') }
             </span>
           </div>
           <div>

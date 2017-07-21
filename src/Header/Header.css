@@ -1,5 +1,4 @@
 .header-container {
-  font-family: cochin;
   height: 150px;
   width: 100%;
   background-color: rgba(139,87,42,86);
@@ -9,6 +8,11 @@
 }
 
 .book-bucket-logo {
+  font-size: 30px;
+  height: 100%;
   width: 150px;
-  background-color: red;
+  text-align: center;
+  color: black;
+  border: 1px solid red;
+  background-color: rgba(139,87,42,86);
 }

@@ -1,28 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export const renderMultiple = arr => {
+export const renderMultiple = (arr,containerClass,itemClass) => {
+  // debugger
   if (!arr) {
     return null
   }
   if (arr.length > 1) {
     const print = arr.map(i => {
-      return (<p className='render-multiple'>{ i }</p>)
+      return (
+        <div className={ itemClass }>{ i }</div>
+      )
     })
     return (
-      <div className='render-multiple-container'>{ print }</div>
+      <div className={ containerClass }>{ print }</div>
     )
   } else {
     return arr
   }
 }
 
-export const genericFetch = address => {
-  return fetch(address)
-         .then(resp => resp.json())
-         .then(image => {
-           return (
-             <img src='address'
-                  className='book-image'>{ image }</img>
-           )
-         })
-}
+export const renderSaveBookButtons = (userState,bookInfo,funcA) => {
+  if (userState) {
+    return (
+      <div>
+        <button onClick={() => {
+                  funcA(bookInfo,'read')}}>Read This Book?</button>
+        <button onClick={() => {
+                  funcA(bookInfo,'want')}}>Want This Book?</button>
+        <button onClick={() => {
+                  funcA(bookInfo,'own')}}>Own This Book?</button>
+      </div>
+    )
+  } else {
+      return (
+          <button>
+            Log In to save this book to your personal library
+          </button>
+      )
+    }
+  }
