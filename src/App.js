@@ -3,10 +3,8 @@ import    Header                from './Header/Header';
 import    Main                  from './Main/Main';
 import                               './App.css';
 import  { getGoogleBooksAPI }   from './fetches/fetchCalls';
-import  { renderMultiple,
-          genericFetch }        from './assets/helpers';
+import  { renderMultiple }      from './assets/helpers';
 import  { bookStub }            from './assets/bookStub';
-import  { Route, Link }         from 'react-router-dom';
 
 
 class App extends Component {
@@ -16,7 +14,7 @@ class App extends Component {
       query: '',
       searchResults: [],
       userState: {
-        loginState: true,
+        loginState: false,
         userLibrary: []
       }
     }
@@ -44,10 +42,13 @@ class App extends Component {
       <div className="App">
         <Header fetchBooks={ this.fetchBooks } />
         <Main searchResults={ this.state.searchResults }
-                 logInState={ this.state.logInState } />
+                 logInState={ this.state.userState.loginState } />
       </div>
     )
   }
 }
 
 export default App;
+
+
+// combine the retail value of all books in your personal library to show how much money your libary costs

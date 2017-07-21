@@ -1,45 +1,34 @@
-import    React, { Component }  from 'react';
-import  { renderMultiple }      from '../assets/helpers';
-import  { Link }                from 'react-router-dom';
-import    SearchResults         from '../SearchResults/SearchResults';
-import                               './OneBook.css';
-import { renderSaveBookButtons }  from '../assets/helpers';
+import    React                   from 'react';
+import  { renderMultiple }        from '../assets/helpers';
+
+import  { renderSaveBookButtons,
+          renderIndustryIdentifiers }        from '../assets/helpers';
+import                                 './OneBook.css';
+
+
 
 const OneBook = ({ bookData, saveBook, userState }) => {
-  const { volumeInfo } = bookData
-  const singleBook = Object.keys(volumeInfo).map( i => {
-    // console.log('logging i: ', bookData[i])
-//'Authors:' is being printed as many times as there are items to iterate over from the singleBooks keys. I'm gonna have take care of this issue at the fetch(?) Or is it on account of multiple renderings?
-console.log(i)
-    return (
-      <div className='single-card'
-                  id={ bookData.id }>
-
-        <h3 className='single-book-title'>
-          <span className="single-book-title-span">
-            {volumeInfo[i].title}
-          </span>
-        </h3>
-
-        <h5 className='single-book-author'>Authors:
-          <span className=''>
-            {/* { renderMultiple(bookData[i].authors, 'authors-container', 'authors-single') } */}
-          </span>
-        </h5>
-        <div>
-          {/* {bookData[i].} */}
-        </div>
-        {renderSaveBookButtons(userState, bookData, saveBook)}
-      </div>
-    )
-
-  })
-
-
-
+  const { volumeInfo:{  authors,categories,
+                        description,industryIdentifiers,
+                        language,maturityRating,
+                        pageCount,publishedDate,
+                        publisher,subtitle,title }} = bookData
   return (
-    <div className='one-book-box'>
-      { singleBook }
+    <div className='one-book-box'
+                id={ bookData.id } >
+      <header className='one-book-title-container'>
+        <h5 className='one-book-title'>{ title }</h5>
+        <h3 className='on-book-sub-title'>{ subtitle }</h3>
+      </header>
+      <div className='one-book-author-text'>Author:{ renderMultiple(authors,'one-book-authors-box','one-book-author') }</div>
+      <p className='one-book-description'>{ description }</p>
+      <p className='one-book-publisher-text'>Publisher:<span className='one-book-publisher'>{ publisher }</span></p>
+      <p className='one-book-publish-date-text'>Published:<span className='one-book-publish-date'>{ publishedDate }</span></p>
+      { renderIndustryIdentifiers(industryIdentifiers) }
+      <div className='one-box-pagecount-text'>Page Count:<span className='one-box-pagecount'>{ pageCount }</span></div>
+      <div className='one-box-language-text'>Language:<span className='one-box-language'>{ language }</span></div>
+
+      { renderSaveBookButtons(userState, bookData, saveBook) }
     </div>
   )
 }

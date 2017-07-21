@@ -7,7 +7,8 @@ const SearchResults = ({ searchResults, lookAtBook }) => {
   const query = searchResults.map( i => {
     const { volumeInfo } = i
     return (
-      <Link to={`/main/${i.id}`} >
+      <Link to={`/main/${i.id}`}
+           key={i.id}>
         <div className='book-card'
                     id={ i.id }
                     onClick={ () => { lookAtBook(i) } }>
