@@ -10,7 +10,8 @@ export default class LogInUser extends Component {
 
     }
     this.onChange = this.onChange.bind(this)
-    this.onClick = this.onClick.bind(this)
+    this.onClick  = this.logInClick.bind(this)
+
   }
 
   onChange(e, toChange) {
@@ -19,9 +20,9 @@ export default class LogInUser extends Component {
     })
   }
 
-onClick() {
-  this.props.logInUser()
-}
+  logInClick() {
+    this.props.logInUser()
+  }
 
   render() {
     return (
@@ -38,7 +39,8 @@ onClick() {
                   value={ this.state.email }
                   onChange={ e => { this.onChange(e, 'email') } } />
         </section>
-        <button onClick={() => {this.onClick()}}>Log In</button>
+        <button onClick={ () => {this.logInClick()} }>Log In</button>
+        <button onClick={ () => { } }>New User</button>
       </div>
     )
   }

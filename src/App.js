@@ -3,7 +3,11 @@ import    Header                from './Header/Header';
 import    LogInRegisterModal    from './LogInRegisterModal/LogInRegisterModal';
 import    Main                  from './Main/Main';
 import  { getGoogleBooksAPI }   from './fetches/fetchCalls';
-import  { renderMultiple }      from './assets/helpers';
+import  { renderMultiple,
+          logInUser,
+          getRegisteredUsers,
+          registerNewUser,
+          changeModalState }    from './assets/helpers';
 import  { bookStub,
           registeredUsersStub } from './assets/stubs';
 import                               './App.css';
@@ -16,21 +20,28 @@ class App extends Component {
       query: '',
       searchResults: [],
       userState: {
-        loginState: false,
-        userLibrary: [] },
-      registeredUsers: registeredUsersStub,
-      modalState: true
+                  loginState: false,
+                  userData: {},
+                  userLibrary: []
+                 },
+      registeredUsers: [],
+      modalState: false
     }
-    this.getGoogleBooksAPI = getGoogleBooksAPI.bind(this)
-    this.fetchBooks = this.fetchBooks.bind(this)
-    this.renderMultiple = renderMultiple.bind(this)
-    this.logInUser = this.logInUser.bind(this)
+    this.getGoogleBooksAPI          = getGoogleBooksAPI.bind(this)
+    this.fetchBooks                 = this.fetchBooks.bind(this)
+    this.renderMultiple             = renderMultiple.bind(this)
+    this.logInUser                  = logInUser.bind(this)
+    this.logInUserConnector         = this.logInUserConnector.bind(this)
+    this.getRegisteredUsers         = getRegisteredUsers.bind(this)
+    this.registerNewUser            = registerNewUser.bind(this)
+    this.changeModalStateConnector  = this.changeModalStateConnector.bind(this)
     // how do I make fetch calls for images???
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
-      searchResults: bookStub.items
+      searchResults: bookStub.items,
+      registeredUsers: this.getRegisteredUsers([...this.state.registeredUsers])
     })
   }
 
@@ -41,10 +52,12 @@ class App extends Component {
     this.getGoogleBooksAPI(query, this)
   }
 
-  logInUser() {
-    this.setState({
-      modalState: false
-    })
+  logInUserConnector() {
+    this.logInUser(this)
+  }
+
+  changeModalStateConnector() {
+    changeModalState(this)
   }
 
   render() {
@@ -54,11 +67,14 @@ class App extends Component {
         <Main searchResults={ this.state.searchResults }
                  logInState={ this.state.userState.loginState }
             registerNewUser={ this.registerNewUser }
+           changeModalState={ this.changeModalStateConnector }
             registeredUsers={ this.state.registeredUsers } />
-        <LogInRegisterModal modalState={ this.state.modalState }
+
+        <LogInRegisterModal  logInUser={ this.logInUserConnector }
+                            modalState={ this.state.modalState }
+                            enderLogin={ this.state.renderLogin }
                        registeredUsers={ this.state.registeredUsers }
-                             userState={ this.state.userState }
-                             logInUser={ this.logInUser } />
+                       registerNewUser={ this.registerNewUser } />
       </div>
     )
   }

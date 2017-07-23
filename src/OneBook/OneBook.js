@@ -6,8 +6,7 @@ import                                     './OneBook.css';
 
 
 
-const OneBook = ({ bookData, saveBook, logInState }) => {
-
+const OneBook = ({ bookData, saveBook, logInState, changeModalState }) => {
   const { volumeInfo:{  authors,categories,
                         description,industryIdentifiers,
                         language,pageCount,
@@ -36,7 +35,7 @@ const OneBook = ({ bookData, saveBook, logInState }) => {
       <div className='one-box-language-text'>Language:
         <span className='one-box-language'>{ language }</span>
       </div>
-      { renderSaveBookButtons(logInState, bookData, saveBook) }
+      { renderSaveBookButtons(logInState, bookData, saveBook, changeModalState) }
     </div>
   )
 }

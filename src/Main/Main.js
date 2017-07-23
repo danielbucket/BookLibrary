@@ -43,7 +43,8 @@ export default class Main extends Component {
               <OneBook bookData={ this.state.bookData }
                        saveBook={ this.saveBook }
                      logInState={ this.props.logInState }
-                      userState={ this.props.userState } /> }/>
+               changeModalState={ this.props.changeModalState }
+                      userState={ this.props.userState } /> } />
 
           </Switch>
         </div>
