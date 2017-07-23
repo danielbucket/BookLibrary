@@ -797,3 +797,53 @@ export const bookStub = {
     }
   ]
 }
+
+export const registeredUsersStub = [
+  {
+    userName: 'RandingoTheFat',
+       email: 'RandingoTheFat@mail.com',
+    password: 'RandingoTheFat'
+  },
+  {
+    userName: 'Mr.Lahey',
+       email: 'alwaysDrunk@mail.com',
+    password: 'alwaysDrunk'
+  },
+  {
+    userName: 'Bubbles',
+       email: 'kittysAreSoCute@gmail.com',
+    password: 'greenBastard'
+  }
+]
+
+export const hackeyStub = {
+        id:'',
+        library:{ read:false, want:false, own:false},
+        volumeInfo:{  allowAnonLogging:false,
+                      authors:['Gary','Billiam'],
+                      canonicalVolumeLink:'',
+                      categories:[],
+                      contentVersion:'',
+                      description:'description',
+                      imageLinks:{},
+                      industryIdentifiers: [
+                        {
+                          identifier:'ISBN Number1'
+                        },
+                        {
+                          identifier:'ISBN Number2'
+                        } ],
+                      infoLink:'',
+                      language:'en',
+                      maturityRating:'',
+                      pageCount:256,
+                      previewLink:'',
+                      printType:'',
+                      publishedDate:'10-11-12',
+                      publisher:'Carper Hollins',
+                      readingModes:{},
+                      subtitle:'Time to take out the garbage',
+                      title:'Trailer Park Trash',
+                      __proto__:{}
+                  }
+      }
