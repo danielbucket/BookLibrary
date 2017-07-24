@@ -11,3 +11,9 @@ export const getGoogleBooksAPI = (query, mainState) => {
   })
   .catch(error => console.log('Error fetching books: ', error))
 }
+
+export const fetchRegisteredUsers = () => {
+  fetch("/users")
+  .then(resp => resp.json() )
+  .then((data) => {return(data)})
+}

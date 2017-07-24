@@ -1,16 +1,16 @@
-import    React, { Component }  from 'react';
-import    Header                from './Header/Header';
-import    LogInRegisterModal    from './LogInRegisterModal/LogInRegisterModal';
-import    Main                  from './Main/Main';
-import  { getGoogleBooksAPI }   from './fetches/fetchCalls';
+import    React, { Component }   from 'react';
+import    Header                 from './Header/Header';
+import    LogInRegisterModal     from './LogInRegisterModal/LogInRegisterModal';
+import    Main                   from './Main/Main';
+import  { getGoogleBooksAPI,
+          fetchRegisteredUsers } from './fetches/fetchCalls';
 import  { renderMultiple,
           logInUser,
           getRegisteredUsers,
           registerNewUser,
-          changeModalState }    from './assets/helpers';
-import  { bookStub,
-          registeredUsersStub } from './assets/stubs';
-import                               './App.css';
+          changeModalState }     from './assets/helpers';
+import  { bookStub }             from './assets/stubs';
+import                                './App.css';
 
 
 class App extends Component {
@@ -20,11 +20,13 @@ class App extends Component {
       query: '',
       searchResults: [],
       userState: {
-                  loginState: false,
-                  userData: {},
-                  userLibrary: []
+                  id: '',
+                  username: '',
+                  email: '',
+                  password: '',
+                  library: []
                  },
-      registeredUsers: [],
+      loginState: false,
       modalState: false
     }
     this.getGoogleBooksAPI          = getGoogleBooksAPI.bind(this)
@@ -41,7 +43,6 @@ class App extends Component {
   componentDidMount() {
     this.setState({
       searchResults: bookStub.items,
-      registeredUsers: this.getRegisteredUsers([...this.state.registeredUsers])
     })
   }
 
@@ -65,16 +66,15 @@ class App extends Component {
       <div className="App">
         <Header fetchBooks={ this.fetchBooks } />
         <Main searchResults={ this.state.searchResults }
-                 logInState={ this.state.userState.loginState }
             registerNewUser={ this.registerNewUser }
            changeModalState={ this.changeModalStateConnector }
             registeredUsers={ this.state.registeredUsers } />
 
-        <LogInRegisterModal  logInUser={ this.logInUserConnector }
-                            modalState={ this.state.modalState }
-                            enderLogin={ this.state.renderLogin }
-                       registeredUsers={ this.state.registeredUsers }
-                       registerNewUser={ this.registerNewUser } />
+        <LogInRegisterModal  logInUserConnector={ this.logInUserConnector }
+                                     loginState={ this.state.loginState }
+                                     modalState={ this.state.modalState }
+                                registeredUsers={ this.state.registeredUsers }
+                                registerNewUser={ this.registerNewUser } />
       </div>
     )
   }

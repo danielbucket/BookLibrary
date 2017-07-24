@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { logInStyle } from './LogInCSS';
 
 export default class LogInUser extends Component {
@@ -7,11 +8,10 @@ export default class LogInUser extends Component {
     this.state = {
       userName: '',
       email: '',
-
+      registeredUsers: this.props.registeredUsers
     }
     this.onChange = this.onChange.bind(this)
     this.onClick  = this.logInClick.bind(this)
-
   }
 
   onChange(e, toChange) {
@@ -21,8 +21,10 @@ export default class LogInUser extends Component {
   }
 
   logInClick() {
-    this.props.logInUser()
+    this.props.logInUserConnector()
   }
+
+
 
   render() {
     return (
@@ -40,7 +42,9 @@ export default class LogInUser extends Component {
                   onChange={ e => { this.onChange(e, 'email') } } />
         </section>
         <button onClick={ () => {this.logInClick()} }>Log In</button>
-        <button onClick={ () => { } }>New User</button>
+        <Link to='/register'>
+          <button onClick={ () => { } }>New User</button>
+        </Link>
       </div>
     )
   }
