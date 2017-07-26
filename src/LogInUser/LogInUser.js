@@ -10,8 +10,8 @@ export default class LogInUser extends Component {
       email: '',
       registeredUsers: this.props.registeredUsers
     }
-    this.onChange = this.onChange.bind(this)
-    this.onClick  = this.logInClick.bind(this)
+    this.onChange   = this.onChange.bind(this)
+    this.logInClick = this.logInClick.bind(this)
   }
 
   onChange(e, toChange) {
@@ -21,6 +21,7 @@ export default class LogInUser extends Component {
   }
 
   logInClick() {
+    console.log(this.props);
     this.props.logInUserConnector()
   }
 
@@ -43,7 +44,7 @@ export default class LogInUser extends Component {
         </section>
         <button onClick={ () => {this.logInClick()} }>Log In</button>
         <Link to='/register'>
-          <button onClick={ () => { } }>New User</button>
+          <button>New To This Shit? Yeah, me too.</button>
         </Link>
       </div>
     )

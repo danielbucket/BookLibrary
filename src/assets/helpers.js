@@ -32,9 +32,11 @@ export const changeModalState = (mainState) => {
   })
 }
 
+
+
 ///
 export const renderSaveBookButtons = (logInState,bookData,saveBook,changeModalState) => {
-  if (logInState === true) {
+  if (logInState) {
     return (
       <div>
         <button className='save-to-library-btn'
@@ -59,6 +61,8 @@ export const renderSaveBookButtons = (logInState,bookData,saveBook,changeModalSt
     }
   }
 
+
+
 ///
 export const renderIndustryIdentifiers = (input=[]) => {
   const result = input.map( i => {
@@ -78,16 +82,12 @@ export const renderIndustryIdentifiers = (input=[]) => {
 }
 
 ///
-export const logInUser = (mainState, logInUserName, logiInEmail) => {
-  const { userState, registeredUsers } = mainState.state;
-
-
-
-
-
+export const logInUser = (mainState, userObj, source) => {
+  //source should be a string identifying where the call was made from
 
 
   mainState.setState({
+    userState: userObj,
     modalState: false
   })
 }
@@ -102,7 +102,6 @@ export const getRegisteredUsers = () => {
 
   if (registeredUsersArray === null) {
     setRegisteredUsers(registeredUsersStub)
-    // setRegisteredUsers(registeredUserState)
   }
 
   return (
@@ -112,6 +111,7 @@ export const getRegisteredUsers = () => {
 
 ///
 export const registerNewUser = (newUserName,newUserEmail,password,registeredUsersState) => {
+
   if (registeredUsersState.userName === newUserName) {
     return (
       <div>

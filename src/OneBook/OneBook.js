@@ -6,8 +6,8 @@ import                                     './OneBook.css';
 
 
 
-const OneBook = ({ bookData, saveBook, logInState, changeModalState }) => {
-  const { volumeInfo:{  authors,categories,
+const OneBook = ({ bookData, saveBook, logInState, changeModalState, userState }) => {
+const { volumeInfo:{  authors,categories,
                         description,industryIdentifiers,
                         language,pageCount,
                         publishedDate,publisher,

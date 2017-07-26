@@ -3,7 +3,8 @@ import    Header                 from './Header/Header';
 import    LogInRegisterModal     from './LogInRegisterModal/LogInRegisterModal';
 import    Main                   from './Main/Main';
 import  { getGoogleBooksAPI,
-          fetchRegisteredUsers } from './fetches/fetchCalls';
+          fetchRegisteredUsers,
+          createNewUser }        from './fetches/fetchCalls';
 import  { renderMultiple,
           logInUser,
           getRegisteredUsers,
@@ -20,13 +21,11 @@ class App extends Component {
       query: '',
       searchResults: [],
       userState: {
-                  id: '',
                   username: '',
                   email: '',
-                  password: '',
                   library: []
                  },
-      loginState: false,
+      logInState: false,
       modalState: false
     }
     this.getGoogleBooksAPI          = getGoogleBooksAPI.bind(this)
@@ -34,8 +33,11 @@ class App extends Component {
     this.renderMultiple             = renderMultiple.bind(this)
     this.logInUser                  = logInUser.bind(this)
     this.logInUserConnector         = this.logInUserConnector.bind(this)
+    this.createNewUser              = createNewUser.bind(this)
+    this.createNewUserConnector     = this.createNewUserConnector.bind(this)
     this.getRegisteredUsers         = getRegisteredUsers.bind(this)
     this.registerNewUser            = registerNewUser.bind(this)
+    this.changeModalState           = changeModalState.bind(this)
     this.changeModalStateConnector  = this.changeModalStateConnector.bind(this)
     // how do I make fetch calls for images???
   }
@@ -57,24 +59,29 @@ class App extends Component {
     this.logInUser(this)
   }
 
+  createNewUserConnector(userObj) {
+    this.createNewUser(userObj, this)
+  }
+
   changeModalStateConnector() {
-    changeModalState(this)
+    this.changeModalState(this)
   }
 
   render() {
     return (
       <div className="App">
         <Header fetchBooks={ this.fetchBooks } />
-        <Main searchResults={ this.state.searchResults }
-            registerNewUser={ this.registerNewUser }
-           changeModalState={ this.changeModalStateConnector }
-            registeredUsers={ this.state.registeredUsers } />
+
+        <Main  registeredUsers={ this.state.registeredUsers }
+                    logInState={ this.state.logInState }
+              changeModalState={ this.changeModalStateConnector }
+                 searchResults={ this.state.searchResults } />
 
         <LogInRegisterModal  logInUserConnector={ this.logInUserConnector }
                                      loginState={ this.state.loginState }
                                      modalState={ this.state.modalState }
-                                registeredUsers={ this.state.registeredUsers }
-                                registerNewUser={ this.registerNewUser } />
+                                registerNewUser={ this.registerNewUser }
+                                   logInNewUser={ this.createNewUserConnector } />
       </div>
     )
   }

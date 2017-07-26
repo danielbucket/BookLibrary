@@ -30,6 +30,7 @@ export default class Main extends Component {
   }
 
   render() {
+    this.props.currentUser
     return (
       <div className='main'>
         <div className='search-results-container'>
@@ -44,7 +45,7 @@ export default class Main extends Component {
                        saveBook={ this.saveBook }
                      logInState={ this.props.logInState }
                changeModalState={ this.props.changeModalState }
-                      userState={ this.props.userState } /> } />
+                      userState={ this.props.currentUser } /> } />
 
           </Switch>
         </div>
