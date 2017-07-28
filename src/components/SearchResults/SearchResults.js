@@ -1,5 +1,5 @@
 import    React            from 'react';
-import  { renderMultiple } from '../assets/helpers';
+import  { renderMultiple } from '../../assets/helpers';
 import  { Link }           from 'react-router-dom';
 import                          './SearchResults.css';
 

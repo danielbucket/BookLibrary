@@ -1,7 +1,7 @@
 import    React                       from 'react';
-import  { renderMultiple }            from '../assets/helpers';
+import  { renderMultiple }            from '../../assets/helpers';
 import  { renderSaveBookButtons,
-          renderIndustryIdentifiers } from '../assets/helpers';
+          renderIndustryIdentifiers } from '../../assets/helpers';
 import                                     './OneBook.css';
 
 

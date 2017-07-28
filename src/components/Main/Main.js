@@ -2,7 +2,7 @@ import    React, { Component }  from 'react';
 import    SearchResults         from '../SearchResults/SearchResults';
 import    OneBook               from '../OneBook/OneBook';
 import  { Route, Switch }       from 'react-router-dom';
-import  { hackeyStub }          from '../assets/stubs';
+import  { hackeyStub }          from '../../assets/stubs';
 import                               './Main.css';
 
 

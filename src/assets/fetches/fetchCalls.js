@@ -1,4 +1,4 @@
-import { logInUser } from '../assets/helpers';
+import { logInUser } from '../helpers';
 
 export const getGoogleBooksAPI = (query, mainState) => {
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)

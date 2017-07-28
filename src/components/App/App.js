@@ -1,16 +1,16 @@
 import    React, { Component }   from 'react';
-import    Header                 from './Header/Header';
-import    LogInRegisterModal     from './LogInRegisterModal/LogInRegisterModal';
-import    Main                   from './Main/Main';
+import    Header                 from '../../containers/Header/HeaderContainer';
+import    LogInRegisterModal     from '../../containers/LogInRegisterModal/LogInRegisterModalContainer';
+import    Main                   from '../../containers/Main/MainContainer';
 import  { getGoogleBooksAPI,
           fetchRegisteredUsers,
-          createNewUser }        from './fetches/fetchCalls';
+          createNewUser }        from '../../assets/fetches/fetchCalls';
 import  { renderMultiple,
           logInUser,
           getRegisteredUsers,
           registerNewUser,
-          changeModalState }     from './assets/helpers';
-import  { bookStub }             from './assets/stubs';
+          changeModalState }     from '../../assets/helpers';
+import  { bookStub }             from '../../assets/stubs';
 import                                './App.css';
 
 
@@ -70,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header fetchBooks={ this.fetchBooks } />
+        <Header  fetchBooks={ this.fetchBooks } />
 
         <Main  registeredUsers={ this.state.registeredUsers }
                     logInState={ this.state.logInState }
