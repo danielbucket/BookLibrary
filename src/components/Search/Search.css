@@ -1,0 +1,27 @@
+.search-box-container {
+  background-color: rgba(139,87,42,86);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.search-box-title {
+  font-size: 24px;
+  background-color: #1CBCF8;
+  border-radius: 5px;
+
+}
+
+.search-bits {
+  background-color: rgba(139,87,42,86);
+
+  height: 20px;
+  width: 150px;
+  border: none;
+}
+
+.search-input {
+  background-color: rgb(0,2,4,9);
+}

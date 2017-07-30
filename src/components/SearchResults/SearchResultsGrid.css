@@ -1,0 +1,40 @@
+.because-grid {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.book-cards-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 50% 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.book-card {
+  border: 1px solid blue;
+  display: grid;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  width: 98%;
+  height: 98%;
+}
+
+.book-title {
+  font-size: 18px;
+  height: 40px;
+}
+
+.book-author-text {
+  margin: auto;
+}
+
+.authors-list {
+  /*text-overflow: fade(5%);*/
+  text-overflow: ellipsis;
+  /*border: 1px solid red;*/
+  height: 30px;
+  width: 100%;
+
+}
