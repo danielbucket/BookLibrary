@@ -1,9 +1,10 @@
 import    React, { Component }   from 'react';
-import    Header                 from '../../containers/Header/HeaderContainer';
+import { Route, Router } from 'react-router'
+
+import    HeaderContainer        from '../../containers/Header/HeaderContainer';
 import    LogInRegisterModal     from '../../containers/LogInRegisterModal/LogInRegisterModalContainer';
 import    Main                   from '../../containers/Main/MainContainer';
-import  { getGoogleBooksAPI,
-          fetchRegisteredUsers,
+import  { fetchRegisteredUsers,
           createNewUser }        from '../../assets/fetches/fetchCalls';
 import  { renderMultiple,
           logInUser,
@@ -12,6 +13,9 @@ import  { renderMultiple,
           changeModalState }     from '../../assets/helpers';
 import  { bookStub }             from '../../assets/stubs';
 import                                './App.css';
+
+import createHistory from 'history/createBrowserHistory'
+const history = createHistory()
 
 
 class App extends Component {
@@ -28,8 +32,7 @@ class App extends Component {
       logInState: false,
       modalState: false
     }
-    this.getGoogleBooksAPI          = getGoogleBooksAPI.bind(this)
-    this.fetchBooks                 = this.fetchBooks.bind(this)
+
     this.renderMultiple             = renderMultiple.bind(this)
     this.logInUser                  = logInUser.bind(this)
     this.logInUserConnector         = this.logInUserConnector.bind(this)
@@ -48,13 +51,6 @@ class App extends Component {
     })
   }
 
-  fetchBooks(query) {
-    this.setState({
-      query: query,
-    })
-    this.getGoogleBooksAPI(query, this)
-  }
-
   logInUserConnector() {
     this.logInUser(this)
   }
@@ -70,18 +66,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header  fetchBooks={ this.fetchBooks } />
 
-        <Main  registeredUsers={ this.state.registeredUsers }
-                    logInState={ this.state.logInState }
-              changeModalState={ this.changeModalStateConnector }
-                 searchResults={ this.state.searchResults } />
+          <HeaderContainer />
+          <Main />
 
-        <LogInRegisterModal  logInUserConnector={ this.logInUserConnector }
-                                     loginState={ this.state.loginState }
-                                     modalState={ this.state.modalState }
-                                registerNewUser={ this.registerNewUser }
-                                   logInNewUser={ this.createNewUserConnector } />
+          <LogInRegisterModal  logInUserConnector={ this.logInUserConnector }
+                                       loginState={ this.state.loginState }
+                                       modalState={ this.state.modalState }
+                                  registerNewUser={ this.registerNewUser }
+                                     logInNewUser={ this.createNewUserConnector } />
+
       </div>
     )
   }

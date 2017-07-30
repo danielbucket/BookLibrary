@@ -24,6 +24,7 @@ export default class Search extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="search-box-container">
@@ -31,12 +32,13 @@ export default class Search extends Component {
         <input  className="search-bits search-input"
                     value={ this.state.searchFor }
                   onClick={() => {this.setSearchField('')}}
-                 onChange={e => this.onChange(e) }/>
+                 onChange={e => this.onChange(e) } />
 
         <Link to='/main/searchresults'>
           <button  className="search-bits search-submit-button"
-                     onClick={ () => {     this.props.fetchBooks(this.state.searchFor)
-                                     this.setSearchField('quick search')
+                     onClick={ () => {
+                       this.props.fetchBooks(this.state.searchFor)
+                                     this.setSearchField('quick search, yo')
                                    } }>Submit
           </button>
         </Link>

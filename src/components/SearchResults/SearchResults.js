@@ -3,41 +3,38 @@ import  { renderMultiple } from '../../assets/helpers';
 import  { Link }           from 'react-router-dom';
 import                          './SearchResults.css';
 
-const SearchResults = ({ searchResults, lookAtBook }) => {
-  const query = searchResults.map( i => {
+const SearchResults = (props) => {
+  const { books, aquireBook } = props
+  // locations params id need
+  const query = books.map( i => {
     const { volumeInfo } = i
     return (
-      <Link to={`/main/${i.id}`}
-           key={i.id}>
-        <div className='book-card'
-                    id={ i.id }
-                    onClick={ () => { lookAtBook(i) } }>
-          <h2 className="book-title">{ volumeInfo.title }</h2>
-          <div className="book-author-text">Author:
-            <span className='authors-list'>
-              { renderMultiple(volumeInfo.authors,'authors-container, author-item') }
+      <Link to={`/main/searchresults/${i.id}`} key={i.id} >
+        <h2 className="book-title">{ volumeInfo.title }</h2>
+        <div className="book-author-text">Author:
+          <span className='authors-list'>
+            { renderMultiple(volumeInfo.authors,'authors-container, author-item') }
+          </span>
+        </div>
+        <div>
+          <p className='publish-date-text'>Publish Date:
+            <span className='publish-date'>
+              { volumeInfo.publishedDate }
             </span>
-          </div>
-          <div>
-            <p className='publish-date-text'>Publish Date:
-              <span className='publish-date'>
-                { volumeInfo.publishedDate }
+          </p>
+          <p className="book-publisher-text">Publisher:
+            <span className='publisher'>
+              { volumeInfo.publisher }
+            </span>
+          </p>
+          <div className='rating'>
+            <div className='rating'>Average Rating:
+              <span className='avg-rating'>
+                {volumeInfo.averageRating}
               </span>
-            </p>
-            <p className="book-publisher-text">Publisher:
-              <span className='publisher'>
-                { volumeInfo.publisher }
+              <span className='rating-count'>Out of:
+                {volumeInfo.ratingsCount}
               </span>
-            </p>
-            <div className='rating'>
-              <div className='rating'>Average Rating:
-                <span className='avg-rating'>
-                  {volumeInfo.averageRating}
-                </span>
-                <span className='rating-count'>Out of:
-                  {volumeInfo.ratingsCount}
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -49,6 +46,7 @@ const SearchResults = ({ searchResults, lookAtBook }) => {
     <div className="because-grid">
       <div className='book-cards-container'>
         { query }
+
       </div>
     </div>
   )
