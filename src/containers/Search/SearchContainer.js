@@ -1,15 +1,21 @@
 import  { connect } from 'react-redux';
 import    Search    from '../../components/Search/Search';
+import  { newFieldValue,
+          fetchBook,
+          resetFieldValue } from '../../actions/actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    books: state.booksReducer
+    oldFieldValue: state.newFieldValueReducer,
+    routerReducer: state.routerReducer
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-
+    newFieldValue:    e         => dispatch(newFieldValue(e)),
+    resetFieldValue:  newValue  => dispatch(resetFieldValue(newValue)),
+    fetchBooks:       query     => dispatch(fetchBook(newFieldValue(query)))
   }
 }
 

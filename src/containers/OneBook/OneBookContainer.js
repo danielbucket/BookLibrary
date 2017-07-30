@@ -3,9 +3,7 @@ import OneBook from '../../components/OneBook/OneBook';
 
 const mapStateToProps = (state) => {
   return {
-    book: state.viewSingleBookReducer,
-
-    // this needs all of the books
+    book: state.viewSingleBookReducer
   }
 }
 

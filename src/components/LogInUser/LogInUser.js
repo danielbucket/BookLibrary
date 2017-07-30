@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { logInStyle } from './LogInCSS';
+import    React, { Component } from 'react';
+import  { Link }               from 'react-router-dom';
+import  { logInStyle }         from './LogInCSS';
 
 export default class LogInUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
       userName: '',
-      email: '',
-      registeredUsers: this.props.registeredUsers
+      email: ''
     }
-    this.onChange   = this.onChange.bind(this)
-    this.logInClick = this.logInClick.bind(this)
+
+
   }
 
   onChange(e, toChange) {
@@ -21,11 +20,8 @@ export default class LogInUser extends Component {
   }
 
   logInClick() {
-    console.log(this.props);
-    this.props.logInUserConnector()
+    this.props.getuser(this.state)
   }
-
-
 
   render() {
     return (
@@ -42,7 +38,7 @@ export default class LogInUser extends Component {
                   value={ this.state.email }
                   onChange={ e => { this.onChange(e, 'email') } } />
         </section>
-        <button onClick={ () => {this.logInClick()} }>Log In</button>
+        {/* <button onClick={ () => {this.logInClick()} }>Log In</button> */}
         <Link to='/register'>
           <button>New To This Shit? Yeah, me too.</button>
         </Link>

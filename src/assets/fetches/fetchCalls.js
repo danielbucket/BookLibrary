@@ -12,7 +12,14 @@ export default class fetchCalls {
       })
       .catch(error => console.log('Error fetching books: ', error))
     }
+
+  fetchRegisteredUsers() {
+    return fetch("/bucketLibrary/v1/users")
+    .then(resp => resp.json() )
+    .then((data) => { return(data) })
+  }
 }
+
 
 
 
@@ -20,11 +27,7 @@ export default class fetchCalls {
 export const getGoogleBooksAPI = (query, mainState) => {
 }
 
-export const fetchRegisteredUsers = () => {
-  fetch("/users")
-  .then(resp => resp.json() )
-  .then((data) => { return(data) })
-}
+
 
 export const createNewUser = (userObj, mainState) => {
   fetch("http://localhost:3000/bucketLibrary/v1/users", {

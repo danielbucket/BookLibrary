@@ -1,5 +1,7 @@
 import  { connect } from 'react-redux';
 import    Main      from '../../components/Main/Main';
+import  { aquireSingleBook }  from '../../actions/actions';
+
 
 const mapStateToProps = (state) => {
   return {

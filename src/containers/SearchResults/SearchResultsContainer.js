@@ -1,18 +1,19 @@
 import  { connect }           from 'react-redux';
 import    SearchResults       from '../../components/SearchResults/SearchResults';
-import  { aquireSingleBook }  from '../../actions/actions'
+import  { aquireSingleBook }  from '../../actions/actions';
+import  { withRouter }        from 'react-router-dom';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     books: state.booksReducer
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    aquireBook: (bookData) => { dispatch(aquireSingleBook(bookData)) }
+    aquireBook: bookData => dispatch(aquireSingleBook(bookData))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResults));

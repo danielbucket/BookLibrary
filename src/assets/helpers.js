@@ -81,18 +81,6 @@ export const renderIndustryIdentifiers = (input=[]) => {
   )
 }
 
-///
-export const logInUser = (mainState, userObj, source) => {
-  //source should be a string identifying where the call was made from
-
-
-  mainState.setState({
-    userState: userObj,
-    modalState: false
-  })
-}
-
-///
 const setRegisteredUsers = registeredUserState => {
   localStorage.setItem('bookBucketUsersList', JSON.stringify(registeredUserState))
 }

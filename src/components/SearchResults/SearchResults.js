@@ -5,11 +5,13 @@ import                          './SearchResults.css';
 
 const SearchResults = (props) => {
   const { books, aquireBook } = props
-  // locations params id need
   const query = books.map( i => {
     const { volumeInfo } = i
+
     return (
-      <Link to={`/main/searchresults/${i.id}`} key={i.id} >
+      <Link to={`/main/searchresults/${i.id}`}
+            key={i.id+1}
+            onClick={aquireBook(volumeInfo)} >
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
           <span className='authors-list'>
@@ -43,10 +45,9 @@ const SearchResults = (props) => {
   })
 
   return (
-    <div className="because-grid">
+    <div className="because-grid" >
       <div className='book-cards-container'>
         { query }
-
       </div>
     </div>
   )

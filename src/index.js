@@ -12,15 +12,17 @@ import  { createStore,
 import    thunk                 from 'redux-thunk';
 // import  { routerMiddleware }    from 'react-router-redux';
 
-import createHistory from 'history/createBrowserHistory'
-import { Route } from 'react-router'
-import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
-import { fetchBook } from './actions/actions'
+import createHistory            from 'history/createBrowserHistory'
+import { Route, browserHistory } from 'react-router-dom'
+import { ConnectedRouter,
+         routerMiddleware,
+         push }                  from 'react-router-redux'
+import { fetchBook }             from './actions/actions'
 
 const devTools        = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const enhancers       = compose(applyMiddleware(thunk), devTools)
 const history         = createHistory()
 const middleware      = routerMiddleware(history)
+const enhancers       = compose(applyMiddleware(thunk, middleware), devTools)
 const store           = createStore(rootReducer, {}, enhancers)
 
 

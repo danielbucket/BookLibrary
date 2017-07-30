@@ -6,15 +6,22 @@ import                                     './OneBook.css';
 
 
 
-const OneBook = ({book}) => {
-  console.log(book)
-  
-// find a specific book based on the id
-  // .find() on books array and return that single book object
+const OneBook = (props) => {
+  // console.log(props.books)
+
+  // const { title,
+  //         subtitle,
+  //         authors,
+  //         description,
+  //         publisher,
+  //         publishedDate,
+  //         industryIdentifiers,
+  //         pageCount,
+  //         language } = book
 
   return (
     <div className='one-book-box' >
-      something
+      something. anything.
      {/* <header className='one-book-title-container'>
        <h5 className='one-book-title'>{ title }</h5>
        <h3 className='on-book-sub-title'>{ subtitle }</h3>
@@ -34,8 +41,8 @@ const OneBook = ({book}) => {
      </div>
      <div className='one-box-language-text'>Language:
        <span className='one-box-language'>{ language }</span>
-     </div>
-     { renderSaveBookButtons(logInState, bookData, saveBook, changeModalState) } */}
+     </div> */}
+     {/* { renderSaveBookButtons(logInState, bookData, saveBook, changeModalState) } */}
     </div>
   )
 }
