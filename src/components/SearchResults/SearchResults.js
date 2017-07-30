@@ -9,7 +9,9 @@ const SearchResults = (props) => {
   const query = books.map( i => {
     const { volumeInfo } = i
     return (
-      <Link to={`/main/searchresults/${i.id}`} key={i.id} >
+      <Link to={`/main/searchresults/${i.id}`}
+           key={i.id}
+            onClick={aquireBook(volumeInfo)} >
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
           <span className='authors-list'>
