@@ -23,7 +23,7 @@ export const viewSingleBook = (bookData) => {
   }
 }
 
-export const aquireSingleBook = (book) => {
+export const acquireSingleBook = (book) => {
   return dispatch => {
     dispatch(viewSingleBook(book))
   }
@@ -42,19 +42,68 @@ export const resetFieldValue = (input) => {
   }
 }
 
-export const recieveRegisteredUsers = (response) => {
+export const loginStatus = (user) => {
   return {
-    type: "REGISTERED_USER_DATA",
-    userData: response
+    type: "LOGIN_STATUS",
+    status: user
+  }
+}
+
+export const fetchRegisteredUsers = (logInData) => {
+  return dispatch => {
+    new fetchCalls().fetchRegisteredUsers(logInData)
+    .then(data => {
+      dispatch(loginStatus(data))
+    })
+  }
+}
+
+export const modalState = (value) => {
+  return {
+    type: "MODAL_STATE",
+    value: value
   }
 }
 
 
-// export const fetchRegisteredUsers = (logInData) => {
-//   return dispatch = {
-//     new fetchCalls().fetchRegisteredUsers(logInData)
-//     .then(data => {
-//       dipsatch(recieveRegisteredUsers(data))
-//     })
-//   }
-// }
+export const bookSavedToWantedLibrary = (libraryObj) => {
+  return {
+    type: "BOOK_SAVED_TO_WANTED_LIBRARY",
+    library: libraryObj
+  }
+}
+export const saveBookToWantedLibrary = (library, bookObj) => {
+  return dispatch => {
+    dispatch(bookSavedToWantedLibrary([...library, bookObj]))
+  }
+}
+
+export const bookSavedToReadLibrary = (libraryObj) => {
+  return {
+    type: "BOOK_SAVED_TO_READ_LIBRARY",
+    library: libraryObj
+  }
+}
+
+
+export const saveBookToReadLibrary = (library, bookObj) => {
+  return dispatch => {
+    dispatch(bookSavedToReadLibrary([...library, bookObj]))
+  }
+}
+
+export const bookSavedToOwnedLibrary = (bookArray) => {
+  return {
+    type: "SAVE_BOOK_TO_OWNED_LIBRARY",
+    library: bookArray
+  }
+}
+
+export const saveBookToOwnedLibrary = (library, bookObj) => {
+  return dispatch => {
+    dispatch(bookSavedToOwnedLibrary([...library, bookObj]))
+  }
+}
+
+
+//

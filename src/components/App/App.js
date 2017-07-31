@@ -5,9 +5,7 @@ import  { ProppedLogInRegisterModal }     from '../../containers/LogInRegisterMo
 import  { ProppedMain }                   from '../../containers/Main/MainContainer';
 import  { fetchRegisteredUsers,
           createNewUser }                 from '../../assets/fetches/fetchCalls';
-import  {
-          getRegisteredUsers,
-          registerNewUser,
+import  { registerNewUser,
           changeModalState }              from '../../assets/helpers';
 import                                         './App.css';
 
@@ -19,29 +17,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      userState: {
-                  username: '',
-                  email: '',
-                  library: []
-                 },
-      logInState: false,
       modalState: false
     }
-
-    this.createNewUser              = createNewUser.bind(this)
-    this.createNewUserConnector     = this.createNewUserConnector.bind(this)
-    this.getRegisteredUsers         = getRegisteredUsers.bind(this)
-    this.registerNewUser            = registerNewUser.bind(this)
-    this.changeModalState           = changeModalState.bind(this)
-    this.changeModalStateConnector  = this.changeModalStateConnector.bind(this)
-    // how do I make fetch calls for images???
   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     searchResults: bookStub.items,
-  //   })
-  // }
 
   createNewUserConnector(userObj) {
     this.createNewUser(userObj, this)
@@ -51,22 +29,13 @@ class App extends Component {
     this.changeModalState(this)
   }
 
-// its as if nothing is instigating it to rerender..
-// but then again, the whole flattenChildren() waring came up so...
-// but no until I click the search button in the search component
-// search resuts must be getting called more than once. I can see no other reason as to why it has multiple children with the same key value.
-
   render() {
     return (
       <div className="App">
 
           <ProppedHeader />
           <ProppedMain />
-
-          <ProppedLogInRegisterModal loginState={ this.state.loginState }
-                              modalState={ this.state.modalState }
-                              registerNewUser={ this.registerNewUser }
-                              logInNewUser={ this.createNewUserConnector } />
+          <ProppedLogInRegisterModal />
 
       </div>
     )

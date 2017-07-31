@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export const ProppedHeader = withRouter(connect(mapStateToProps, null)(Header));
+export const ProppedHeader = withRouter(connect(null, null)(Header));

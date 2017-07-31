@@ -1,7 +1,8 @@
-import  { connect }           from 'react-redux';
-import    LogInRegisterModal  from '../../components/LogInRegisterModal/LogInRegisterModal';
-import  { withRouter }        from 'react-router'
-// import  { fetchRegisteredUsers } from '../actions/actions';
+import  { connect }             from 'react-redux';
+import    LogInRegisterModal    from '../../components/LogInRegisterModal/LogInRegisterModal';
+import  { withRouter }          from 'react-router';
+import  { fetchRegisteredUsers,
+          modalState }          from '../../actions/actions';
 
 
 const mapStateToProps = state => {
@@ -12,7 +13,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // getUser: userData => dispatch(fetchRegisteredUsers(userData))
+    modalState: value => dispatch(modalState(value))
   }
 }
 

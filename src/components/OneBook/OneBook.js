@@ -1,28 +1,30 @@
 import    React                       from 'react';
 import  { renderMultiple }            from '../../assets/helpers';
-import  { renderSaveBookButtons,
-          renderIndustryIdentifiers } from '../../assets/helpers';
+import  { renderIndustryIdentifiers } from '../../assets/helpers';
 import                                     './OneBook.css';
 
 
 
-const OneBook = (props) => {
-  console.log(props)
-
-  // const { title,
-  //         subtitle,
-  //         authors,
-  //         description,
-  //         publisher,
-  //         publishedDate,
-  //         industryIdentifiers,
-  //         pageCount,
-  //         language } = book
+const OneBook = ({  book, user, changeModalState,
+                    addBookToWantedLibrary,
+                    addBookToReadLibrary,
+                    addBookToOwnedLibrary,
+                    wantedLibrary,
+                    readLibrary,
+                    ownedLibrary }) => {
+  const { title,
+          subtitle,
+          authors,
+          description,
+          publisher,
+          publishedDate,
+          industryIdentifiers,
+          pageCount,
+          language } = book
 
   return (
     <div className='one-book-box'>
-      something. anything.
-     {/* <header className='one-book-title-container'>
+     <header className='one-book-title-container'>
        <h5 className='one-book-title'>{ title }</h5>
        <h3 className='on-book-sub-title'>{ subtitle }</h3>
      </header>
@@ -41,8 +43,12 @@ const OneBook = (props) => {
      </div>
      <div className='one-box-language-text'>Language:
        <span className='one-box-language'>{ language }</span>
-     </div> */}
-     {/* { renderSaveBookButtons(logInState, bookData, saveBook, changeModalState) } */}
+     </div>
+     <div>
+       <button onClick={() => addBookToWantedLibrary(wantedLibrary,book)}>Want to read this book?</button>
+       <button onClick={() => addBookToReadLibrary(readLibrary,book)}>Read this book?</button>
+       <button onClick={() => addBookToOwnedLibrary(ownedLibrary,book)}>Own this book?</button>
+     </div>
     </div>
   )
 }

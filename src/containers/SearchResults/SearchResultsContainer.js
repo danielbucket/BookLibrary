@@ -1,6 +1,6 @@
 import  { connect }           from 'react-redux';
 import    SearchResults       from '../../components/SearchResults/SearchResults';
-import  { aquireSingleBook }  from '../../actions/actions';
+import  { acquireSingleBook }  from '../../actions/actions';
 import  { withRouter }        from 'react-router';
 
 const mapStateToProps = state => {
@@ -11,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // aquireBook: bookData => dispatch(aquireSingleBook(bookData))
+    acquireBook: bookData => dispatch(acquireSingleBook(bookData))
   }
 }
 
-export const ProppedSearchResults = withRouter(connect(mapStateToProps, null)(SearchResults));
+export const ProppedSearchResults = withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResults));

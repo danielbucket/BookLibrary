@@ -1,6 +1,6 @@
 import  { connect }     from 'react-redux';
 import    App           from '../../components/App/App';
-import  { withRouter }  from 'react-router'
+import  { withRouter }  from 'react-router';
 
 const mapStateToProps = (state) => {
   return {

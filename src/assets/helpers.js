@@ -32,37 +32,6 @@ export const changeModalState = (mainState) => {
   })
 }
 
-
-
-///
-export const renderSaveBookButtons = (logInState,bookData,saveBook,changeModalState) => {
-  if (logInState) {
-    return (
-      <div>
-        <button className='save-to-library-btn'
-                  onClick={() => {
-                    saveBook(bookData,'read')}}>Read This Book?</button>
-        <button className='save-to-library-btn'
-                  onClick={() => {
-                    saveBook(bookData,'want')}}>Want This Book?</button>
-        <button className='save-to-library-btn'
-                  onClick={() => {
-                    saveBook(bookData,'own')}}>Own This Book?</button>
-      </div>
-    )
-  } else {
-      return (
-        <Link to='/login' >
-          <button onClick={() => { changeModalState() }}>
-                Log In to save this book to your personal library
-          </button>
-        </Link>
-      )
-    }
-  }
-
-
-
 ///
 export const renderIndustryIdentifiers = (input=[]) => {
   const result = input.map( i => {
@@ -81,21 +50,21 @@ export const renderIndustryIdentifiers = (input=[]) => {
   )
 }
 
-const setRegisteredUsers = registeredUserState => {
-  localStorage.setItem('bookBucketUsersList', JSON.stringify(registeredUserState))
-}
+// const setRegisteredUsers = registeredUserState => {
+//   localStorage.setItem('bookBucketUsersList', JSON.stringify(registeredUserState))
+// }
 
-export const getRegisteredUsers = () => {
-  const registeredUsersArray = JSON.parse(localStorage.getItem('bookBucketUsersList'))
-
-  if (registeredUsersArray === null) {
-    setRegisteredUsers(registeredUsersStub)
-  }
-
-  return (
-    JSON.parse(localStorage.getItem('bookBucketUsersList'))
-  )
-}
+// export const getRegisteredUsers = () => {
+//   const registeredUsersArray = JSON.parse(localStorage.getItem('bookBucketUsersList'))
+//
+//   if (registeredUsersArray === null) {
+//     setRegisteredUsers(registeredUsersStub)
+//   }
+//
+//   return (
+//     JSON.parse(localStorage.getItem('bookBucketUsersList'))
+//   )
+// }
 
 ///
 export const registerNewUser = (newUserName,newUserEmail,password,registeredUsersState) => {

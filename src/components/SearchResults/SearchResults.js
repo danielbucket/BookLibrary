@@ -4,14 +4,14 @@ import  { Link }           from 'react-router-dom';
 import                          './SearchResults.css';
 const uuidv4 = require('uuid/v4')
 
-const SearchResults = (props) => {
-  const { books } = props
+const SearchResults = ({books, acquireBook}) => {
   const query = books.map( i => {
     const { volumeInfo } = i
 
     return (
       <Link to={`/main/searchresults/${i.id}`}
-            key={uuidv4()}>
+            key={uuidv4()}
+            onClick={acquireBook(volumeInfo)} >
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
           <span className='authors-list'>

@@ -5,8 +5,7 @@ import  { modalStyle,
 import    LogInUser       from '../LogInUser/LogInUser';
 import    RegisterNewUser from '../RegisterNewUser/RegisterNewUser';
 
-const LogInRegisterModal = ({ modalState, userState, logInUserConnector, registerNewUser, logInNewUser }) => {
-
+const LogInRegisterModal = ({ modalState }) => {
 
   if (!modalState) {
     return null
@@ -14,15 +13,9 @@ const LogInRegisterModal = ({ modalState, userState, logInUserConnector, registe
 
   return (
     <section>
-      <div style={ modalStyle }>
-        <Route path='/login' render={({ match }) =>
-          <LogInUser logInUserConnector={ logInUserConnector } />
-        } />
-        <Route path='/register' render={({ match }) =>
-          <RegisterNewUser registerNewUser={ registerNewUser }
-                        logInUserConnector={ logInUserConnector }
-                              logInNewUser={ logInNewUser } />
-        } />
+      <div style={ modalStyle}>
+        <Route exact path='/login' component={LogInUser} />
+        <Route path='/register' component={RegisterNewUser} />
       </div>
       <div style={ backdropStyle }></div>
     </section>

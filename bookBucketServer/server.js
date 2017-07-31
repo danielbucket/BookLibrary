@@ -19,7 +19,7 @@ app.use(cors({
   allowedOrigins: ['localhost:3000', 'localhost:3001']
 }))
 
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 4400)
 app.locals.title = 'User BucketLibrary Server'
 app.locals.users = {}
 app.locals.library = {}
