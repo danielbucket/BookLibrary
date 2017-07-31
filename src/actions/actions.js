@@ -65,7 +65,6 @@ export const modalState = (value) => {
   }
 }
 
-
 export const bookSavedToWantedLibrary = (libraryObj) => {
   return {
     type: "BOOK_SAVED_TO_WANTED_LIBRARY",
@@ -73,8 +72,20 @@ export const bookSavedToWantedLibrary = (libraryObj) => {
   }
 }
 export const saveBookToWantedLibrary = (library, bookObj) => {
-  return dispatch => {
-    dispatch(bookSavedToWantedLibrary([...library, bookObj]))
+  const newLibrary = [...library, bookObj]
+  const findBook = library.indexOf(bookObj)
+
+  if (findBook >= 0) {
+    const newState = newLibrary.filter(cVal => cVal.id !== bookObj.id)
+    return dispatch => {
+      dispatch(bookSavedToWantedLibrary(newState))
+    }
+  }
+
+  if (findBook === -1) {
+    return dispatch => {
+      dispatch(bookSavedToWantedLibrary(newLibrary))
+    }
   }
 }
 
@@ -87,8 +98,20 @@ export const bookSavedToReadLibrary = (libraryObj) => {
 
 
 export const saveBookToReadLibrary = (library, bookObj) => {
-  return dispatch => {
-    dispatch(bookSavedToReadLibrary([...library, bookObj]))
+  const newLibrary = [...library, bookObj]
+  const findBook = library.indexOf(bookObj)
+
+  if (findBook >= 0) {
+    const newState = newLibrary.filter(cVal => cVal.id !== bookObj.id)
+    return dispatch => {
+      dispatch(bookSavedToReadLibrary(newState))
+    }
+  }
+
+  if (findBook === -1) {
+    return dispatch => {
+      dispatch(bookSavedToReadLibrary(newLibrary))
+    }
   }
 }
 
@@ -100,10 +123,26 @@ export const bookSavedToOwnedLibrary = (bookArray) => {
 }
 
 export const saveBookToOwnedLibrary = (library, bookObj) => {
-  return dispatch => {
-    dispatch(bookSavedToOwnedLibrary([...library, bookObj]))
+  const newLibrary = [...library, bookObj]
+  const findBook = library.indexOf(bookObj)
+
+  if (findBook >= 0) {
+    const newState = newLibrary.filter(cVal => cVal.id !== bookObj.id)
+    return dispatch => {
+      dispatch(bookSavedToOwnedLibrary(newState))
+    }
+  }
+
+  if (findBook === -1) {
+    return dispatch => {
+      dispatch(bookSavedToOwnedLibrary(newLibrary))
+    }
   }
 }
 
+
+// return dispatch => {
+//   dispatch(bookSavedToOwnedLibrary([...library]))
+// }
 
 //

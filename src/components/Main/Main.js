@@ -21,9 +21,7 @@ export default class Main extends Component {
             <Route exact path='/main/searchresults' render={
               (books) => <ProppedSearchResults book={books}/>
             } />
-
-
-
+            
           </Switch>
         </div>
       </div>

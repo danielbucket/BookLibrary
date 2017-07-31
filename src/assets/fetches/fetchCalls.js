@@ -1,4 +1,5 @@
 import { logInUser } from '../helpers';
+const uuidv4 = require('uuid/v4')
 
 export default class fetchCalls {
 
@@ -7,7 +8,7 @@ export default class fetchCalls {
       .then(resp => resp.json())
       .then(bookData => {
         return bookData.items.map( item => {
-          return Object.assign(item,{library:{read:false,want:false,own:false}})
+          return Object.assign(item, {id: uuidv4()})
         })
       })
       .catch(error => console.log('Error fetching books: ', error))

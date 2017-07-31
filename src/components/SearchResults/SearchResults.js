@@ -11,7 +11,7 @@ const SearchResults = ({books, acquireBook}) => {
     return (
       <Link to={`/main/searchresults/${i.id}`}
             key={uuidv4()}
-            onClick={acquireBook(volumeInfo)} >
+            onClick={acquireBook(i)} >
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
           <span className='authors-list'>

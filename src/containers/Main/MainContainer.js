@@ -7,7 +7,6 @@ import  { withRouter }        from 'react-router'
 const mapStateToProps = (state) => {
   return {
     books: state.booksReducer
-    // book:  state.viewSingleBookReducer
   }
 }
 
