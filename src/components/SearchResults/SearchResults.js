@@ -2,16 +2,16 @@ import    React            from 'react';
 import  { renderMultiple } from '../../assets/helpers';
 import  { Link }           from 'react-router-dom';
 import                          './SearchResults.css';
+const uuidv4 = require('uuid/v4')
 
 const SearchResults = (props) => {
-  const { books, aquireBook } = props
+  const { books } = props
   const query = books.map( i => {
     const { volumeInfo } = i
 
     return (
       <Link to={`/main/searchresults/${i.id}`}
-            key={i.id+1}
-            onClick={aquireBook(volumeInfo)} >
+            key={uuidv4()}>
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
           <span className='authors-list'>

@@ -1,17 +1,15 @@
-import    React, { Component }   from 'react';
-import { Route, Router } from 'react-router'
-
-import    HeaderContainer        from '../../containers/Header/HeaderContainer';
-import    LogInRegisterModal     from '../../containers/LogInRegisterModal/LogInRegisterModalContainer';
-import    Main                   from '../../containers/Main/MainContainer';
+import    React, { Component }            from 'react';
+import  { Route, Router }                 from 'react-router'
+import  { ProppedHeader }                 from '../../containers/Header/HeaderContainer';
+import  { ProppedLogInRegisterModal }     from '../../containers/LogInRegisterModal/LogInRegisterModalContainer';
+import  { ProppedMain }                   from '../../containers/Main/MainContainer';
 import  { fetchRegisteredUsers,
-          createNewUser }        from '../../assets/fetches/fetchCalls';
+          createNewUser }                 from '../../assets/fetches/fetchCalls';
 import  {
           getRegisteredUsers,
           registerNewUser,
-          changeModalState }     from '../../assets/helpers';
-// import  { bookStub }             from '../../assets/stubs';
-import                                './App.css';
+          changeModalState }              from '../../assets/helpers';
+import                                         './App.css';
 
 import createHistory from 'history/createBrowserHistory'
 const history = createHistory()
@@ -62,10 +60,10 @@ class App extends Component {
     return (
       <div className="App">
 
-          <HeaderContainer />
-          <Main />
+          <ProppedHeader />
+          <ProppedMain />
 
-          <LogInRegisterModal loginState={ this.state.loginState }
+          <ProppedLogInRegisterModal loginState={ this.state.loginState }
                               modalState={ this.state.modalState }
                               registerNewUser={ this.registerNewUser }
                               logInNewUser={ this.createNewUserConnector } />

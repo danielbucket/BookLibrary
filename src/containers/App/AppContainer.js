@@ -1,6 +1,6 @@
-import  { connect } from 'react-redux';
-import    App       from '../../components/App/App';
-import * as actions   from '../../actions/actions';
+import  { connect }     from 'react-redux';
+import    App           from '../../components/App/App';
+import  { withRouter }  from 'react-router'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export const ProppedApp = withRouter(connect(null, null)(App));

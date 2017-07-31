@@ -1,5 +1,6 @@
-import  { connect }   from 'react-redux';
-import    Header      from '../../components/Header/Header';
+import  { connect }     from 'react-redux';
+import    Header        from '../../components/Header/Header';
+import  { withRouter }  from 'react-router'
 
 const mapStateToProps = (state) => {
   return {
@@ -13,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export const ProppedHeader = withRouter(connect(mapStateToProps, null)(Header));

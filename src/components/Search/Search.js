@@ -4,7 +4,6 @@ import                           './Search.css';
 
 export default class Search extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="search-box-container">
         <h3 className="search-box-title">Quick Search</h3>
@@ -17,7 +16,6 @@ export default class Search extends Component {
                      onClick={ () => {
                        this.props.fetchBooks(this.props.oldFieldValue)
                        this.props.resetFieldValue('')
-                      //  this.props.routerReducer.push('/main/searchresults')
                     } }>Submit
           </button>
         </Link>

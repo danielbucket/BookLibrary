@@ -1,9 +1,10 @@
-import { connect } from 'react-redux';
-import OneBook from '../../components/OneBook/OneBook';
+import  { connect }     from 'react-redux';
+import    OneBook       from '../../components/OneBook/OneBook';
+import  { withRouter }  from 'react-router'
 
 const mapStateToProps = (state) => {
   return {
-    book: state.viewSingleBookReducer
+    book: state.booksReducer
   }
 }
 
@@ -13,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OneBook)
+export const ProppedOneBook = withRouter(connect(mapStateToProps, null)(OneBook))

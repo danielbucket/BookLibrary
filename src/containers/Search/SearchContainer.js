@@ -1,8 +1,9 @@
-import  { connect } from 'react-redux';
-import    Search    from '../../components/Search/Search';
+import  { connect }         from 'react-redux';
+import    Search            from '../../components/Search/Search';
 import  { newFieldValue,
           fetchBook,
           resetFieldValue } from '../../actions/actions';
+import  { withRouter }      from 'react-router'
 
 const mapStateToProps = state => {
   return {
@@ -19,4 +20,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export const ProppedSearch =  withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))

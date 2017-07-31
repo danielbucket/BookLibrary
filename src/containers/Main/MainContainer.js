@@ -1,11 +1,12 @@
-import  { connect } from 'react-redux';
-import    Main      from '../../components/Main/Main';
+import  { connect }           from 'react-redux';
+import    Main                from '../../components/Main/Main';
 import  { aquireSingleBook }  from '../../actions/actions';
+import  { withRouter }        from 'react-router'
 
 
 const mapStateToProps = (state) => {
   return {
-
+    books: state.booksReducer
   }
 }
 
@@ -15,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export const ProppedMain = withRouter(connect(mapStateToProps, null)(Main));

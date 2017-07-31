@@ -7,7 +7,7 @@ import                                     './OneBook.css';
 
 
 const OneBook = (props) => {
-  // console.log(props.books)
+  console.log(props)
 
   // const { title,
   //         subtitle,
@@ -20,7 +20,7 @@ const OneBook = (props) => {
   //         language } = book
 
   return (
-    <div className='one-book-box' >
+    <div className='one-book-box'>
       something. anything.
      {/* <header className='one-book-title-container'>
        <h5 className='one-book-title'>{ title }</h5>

@@ -1,6 +1,6 @@
 import    React                 from 'react';
 import    ReactDOM              from 'react-dom';
-import    AppContainer                   from './containers/App/AppContainer';
+import  { ProppedApp }          from './containers/App/AppContainer';
 import    rootReducer           from './reducers/rootReducer';
 import                               './index.css';
 
@@ -30,7 +30,7 @@ ReactDOM.render(
 
   <Provider store={store} >
     <ConnectedRouter history={history}>
-      <Route  path='/' render={ () => <AppContainer /> } />
+      <Route  path='/' render={ () => <ProppedApp /> } />
     </ConnectedRouter>
   </Provider>
 

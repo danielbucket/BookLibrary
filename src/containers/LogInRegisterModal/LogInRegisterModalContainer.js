@@ -1,6 +1,7 @@
-import  { connect } from 'react-redux';
+import  { connect }           from 'react-redux';
+import    LogInRegisterModal  from '../../components/LogInRegisterModal/LogInRegisterModal';
+import  { withRouter }        from 'react-router'
 // import  { fetchRegisteredUsers } from '../actions/actions';
-import LogInRegisterModal from '../../components/LogInRegisterModal/LogInRegisterModal';
 
 
 const mapStateToProps = state => {
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInRegisterModal)
+export const ProppedLogInRegisterModal = withRouter(connect(mapStateToProps, null)(LogInRegisterModal));
