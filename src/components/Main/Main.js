@@ -2,8 +2,7 @@ import    React, { Component }    from 'react';
 import  { ProppedSearchResults }  from '../../containers/SearchResults/SearchResultsContainer';
 import  { ProppedOneBook }        from '../../containers/OneBook/OneBookContainer';
 import  { Route,
-          Switch,
-          NavLink }               from 'react-router-dom';
+          Switch }                from 'react-router-dom';
 import                                 './Main.css';
 
 
@@ -21,7 +20,7 @@ export default class Main extends Component {
             <Route exact path='/main/searchresults' render={
               (books) => <ProppedSearchResults book={books}/>
             } />
-            
+
           </Switch>
         </div>
       </div>

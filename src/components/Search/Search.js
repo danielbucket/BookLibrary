@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router-dom';
-import                           './Search.css';
+import    React, { Component }  from 'react';
+import  { Link }                from 'react-router-dom';
+import  { searchStyle }         from './searchStyle';
 
 export default class Search extends Component {
   render() {
+    const { searchBoxContainer, searchBoxTitle,
+            searchBits, searchInput } = searchStyle
     return (
-      <div className="search-box-container">
-        <h3 className="search-box-title">Quick Search</h3>
-        <input  className="search-bits search-input"
+      <div style={searchBoxContainer}>
+        <h3 style={searchBoxTitle}>Quick Search</h3>
+        <input      style={searchBits, searchInput}
                     value={ this.props.oldFieldValue }
                  onChange={(e) => this.props.newFieldValue(e.target.value) } />
 
         <Link to='/main/searchresults'>
-          <button  className="search-bits search-submit-button"
+          <button      style={searchBits}
                      onClick={ () => {
                        this.props.fetchBooks(this.props.oldFieldValue)
                        this.props.resetFieldValue('')
