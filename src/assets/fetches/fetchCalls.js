@@ -1,5 +1,8 @@
-import { logInUser } from '../helpers';
-const uuidv4 = require('uuid/v4')
+// import  { logInUser }   from '../helpers';
+import  { createUser,
+          logInUser }   from './fetchLocations';
+
+const uuidv4 = require('uuid/v4');
 
 export default class fetchCalls {
 
@@ -8,43 +11,38 @@ export default class fetchCalls {
       .then(resp => resp.json())
       .then(bookData => {
         return bookData.items.map( item => {
-          return Object.assign(item, {id: uuidv4()})
+          return Object.assign(item, {id: uuidv4()}, {shelf:{wanted:false, read:false, owned:false}} )
         })
       })
       .catch(error => console.log('Error fetching books: ', error))
-    }
-
-  fetchRegisteredUsers() {
-    return fetch("/bucketLibrary/v1/users")
-    .then(resp => resp.json() )
-    .then((data) => { return(data) })
   }
-}
 
 
-
-
-
-export const getGoogleBooksAPI = (query, mainState) => {
-}
-
-
-
-export const createNewUser = (userObj, mainState) => {
-  fetch("http://localhost:3000/bucketLibrary/v1/users", {
-    method: "POST",
-    body: JSON.stringify(userObj),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(resp => resp.json())
-  .then(userData => {
-    mainState.setState({
-      userState: userData,
-      logInState: true,
-      modalState: false
+ fetchRegisteredUser(userData) {
+    return fetch(logInUser, {
+      method: "POST",
+      body: userData,
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-  })
-  .catch(error => console.log('error at createNewUser fetch: ', error))
+    .then(resp => resp.json())
+    .then(data => data)
+  }
+
+
+
+  createNewUser(userObj, mainState) {
+    return fetch(createUser, {
+      method: "POST",
+      body: JSON.stringify(userObj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(resp => resp.json())
+    .then(newUser => newUser)
+    .catch(error => console.log('error at createNewUser fetch: ', error))
+  }
+
 }

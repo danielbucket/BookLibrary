@@ -7,6 +7,9 @@ import  { userStatusReducer }     from './userStatusReducer';
 import  { wantedLibraryReducer,
           readLibraryReducer,
           ownedLibraryReducer }   from './libraryReducer';
+import  { loggedInStatus }        from './loggedInStatusReducer';
+import  { modalState }            from './modalStateReducer';
+import  {logInTypeReducer }       from './logInTypeReducer';
 
 
 const rootReducer = combineReducers({
@@ -17,6 +20,9 @@ const rootReducer = combineReducers({
   wantedLibraryReducer,
   readLibraryReducer,
   ownedLibraryReducer,
+  loggedInStatus,
+  modalState,
+  logInTypeReducer,
 
   routerReducer
 })

@@ -21,6 +21,7 @@ export const searchStyle = {
     "backgroundColor": "#1cbcf8"
   },
   "submitBtn": {
-    "borderRadius": "5px"
+    "borderRadius": "5px",
+    "backgroundColor": "#1cbcf8"
   }
 }

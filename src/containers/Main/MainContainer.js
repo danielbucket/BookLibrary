@@ -6,7 +6,7 @@ import  { withRouter }        from 'react-router'
 
 const mapStateToProps = (state) => {
   return {
-    books: state.booksReducer
+
   }
 }
 
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export const ProppedMain = withRouter(connect(mapStateToProps, null)(Main));
+export const ProppedMain = withRouter(connect(null, null)(Main));

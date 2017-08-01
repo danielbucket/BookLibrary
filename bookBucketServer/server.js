@@ -27,14 +27,15 @@ app.locals.library = {}
 
 
 
-// users
+// users get all users from user database
 app.get('/bucketLibrary/v1/users', (request, response) => {
-
+  // checks out
   db('users').select()
   .then(data => response.status(200).json({data}))
   .catch(error => response.status(500).json({error}))
 })
 
+//delete user from user database
 app.delete('/bucketLibrary/v1/users', (request, response) => {
 // checks out
   db('users').where({id: request.body.id}).del()
@@ -42,30 +43,20 @@ app.delete('/bucketLibrary/v1/users', (request, response) => {
   .catch(error => response.status(500).json({error}))
 })
 
-
-// app.get('/api/users/:id', (request, response) => {
-//   const { id } = request.params
-//   const message = app.locals.users[id]
-//
-//   if (!message) { return response.sendStatus(404)  }
-//
-//   response.status(200).json({ id, message })
-// })
-
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
 
-app.post('/bucketLibrary/v1/users', (request, response) => {
+// create new user in user database
+app.post('/bucketLibrary/v1/createuser', (request, response) => {
 // checks out
-  db('users').insert(request.body, ['username', 'email'])
-  .then(data => response.status(200).json({ data }))
+  db('users').insert(request.body, ['username', 'email', 'id'])
+  .then(user => response.status(200).json({ user: user[0] }))
   .catch(error => response.status(500).json({ error }))
 })
 
 
-// library
-
+// get all items from library database
 app.get('/bucketLibrary/v1/library', (request, response) => {
 // checks out
   db('library').select()
@@ -73,15 +64,33 @@ app.get('/bucketLibrary/v1/library', (request, response) => {
   .catch(error => response.status(500).json({ error }))
 })
 
-app.get('/bucketLibrary/v1/users', (request, response) => {
-
-  db.join("users", "email", "=", "id").select("id")
-  .then(data => response.status(200).json({ data }))
-  .then(data => console.log(data))
+// login / verify entered user data exists in database
+app.post('/bucketLibrary/v1/getuser', (request, response) => {
+  //checks out
+  db('users')
+  .where({email: request.body.email, password: request.body.password})
+  .select('id', 'email', 'username')
+  .then(user => response.status(200).json({ user: user[0]}))
   .catch(error => response.status(500).json({ error }))
   })
 
 
+// retrieve all books from library database that satisfy
+// the value of request.body
+app.post('/bucketLibrary/v1/user/library', (request,response) => {
+  // checks out
+  db('library').where(request.body)
+    .select()
+    .then(data => response.status(200).json({data}))
+    .catch(error => response.status(500).json({error}))
+})
 
+// add new user specific book to library database
+app.post('/bucketLibrary/v1/user/library/new', (request, response) => {
+  // checks out
+  db('library').insert(request.body, ['*'])
+  .then(data => response.status(200).json({data}))
+  .catch(error => response.status(500).json({error}))
+})
 
 //
