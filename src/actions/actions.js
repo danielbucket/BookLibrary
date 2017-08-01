@@ -1,4 +1,5 @@
-import fetchCalls from '../assets/fetches/fetchCalls';
+import    fetchCalls      from '../assets/fetches/fetchCalls';
+import  { reduceLibrary } from '../assets/helpers';
 
 export const fetchBook = (query) => {
   return dispatch => {
@@ -49,11 +50,35 @@ export const loginStatus = (user) => {
   }
 }
 
-export const fetchRegisteredUsers = (logInData) => {
+export const activeUserLibrary = (library) => {
+  return {
+    type: "ACTIVE_USER_LIBRARY",
+    library: library
+  }
+}
+
+export const cleanUserLibrary = (library) => {
   return dispatch => {
-    new fetchCalls().fetchRegisteredUsers(logInData)
+    dispatch(activeUserLibrary(reduceLibrary(library)))
+  }
+}
+
+export const fetchUserLibrary = (userdata) => {
+  return dispatch => {
+    new fetchCalls().fetchUsersLibrary(userdata)
+    .then( library => {
+      dispatch(cleanUserLibrary(library))
+    })
+  }
+}
+
+export const fetchUser = (userData) => {
+  console.log(userData)
+  return dispatch => {
+    new fetchCalls().fetchRegisteredUser(userData)
     .then(data => {
-      dispatch(loginStatus(data))
+      dispatch(loginStatus(true))
+      dispatch(fetchUserLibrary(userData))
     })
   }
 }
@@ -62,6 +87,13 @@ export const modalState = (value) => {
   return {
     type: "MODAL_STATE",
     value: value
+  }
+}
+
+export const logInType = (method) => {
+  return {
+    type: "LOG_IN_TYPE",
+    method: method
   }
 }
 
@@ -140,9 +172,20 @@ export const saveBookToOwnedLibrary = (library, bookObj) => {
   }
 }
 
+export const loggedInStatus = (input) => {
+  return {
+    type: "LOGGED_IN_STATUS",
+    status: input
+  }
+}
 
-// return dispatch => {
-//   dispatch(bookSavedToOwnedLibrary([...library]))
-// }
+export const determineLoggedInStatus = (input) => {
+  return dispatch => {
+    dispatch(loggedInStatus(input))
+  }
+}
+
+
+
 
 //

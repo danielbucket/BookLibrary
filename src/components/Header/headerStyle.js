@@ -5,7 +5,7 @@ export const headerStyle = {
     "backgroundColor": "rgba(139,87,42,86)",
     "margin": "0",
     "display": "flex",
-    "justifyContent": "spaceAround",
+    "justifyContent": "space-around",
   },
   bookBucketLogo: {
     fontSize: "30px",
@@ -13,6 +13,9 @@ export const headerStyle = {
     "width": "150px",
     "textAlign": "center",
     "color": "black",
+    "backgroundColor": "rgba(139,87,42,86)"
+  },
+  counterContainer: {
     "backgroundColor": "rgba(139,87,42,86)"
   }
 }

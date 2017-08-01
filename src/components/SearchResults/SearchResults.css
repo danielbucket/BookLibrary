@@ -37,61 +37,7 @@
 }
 
 .book-title {
-  background-color: #1CBCF8;
-  border: 1px solid yellow;
   margin: 2px auto;
   font-size: 18px;
   text-decoration: none;
-}
-
-.book-author-text {
-  background-color: #1CBCF8;
-}
-
-.book-author-text {
-  background-color: #1CBCF8;
-}
-
-.authors-list {
-  background-color: #1CBCF8;
-}
-
-.author-item {
-  background-color: #1CBCF8;
-}
-
-.authors-container {
-  background-color: #1CBCF8;
-}
-
-.athor-item {
-  background-color: #1CBCF8;
-}
-
-.publish-date-text {
-  background-color: #1CBCF8;
-}
-
-.publish-date {
-  background-color: #1CBCF8;
-}
-
-.book-publisher-text {
-  background-color: #1CBCF8;
-}
-
-.publisher {
-  background-color: #1CBCF8;
-}
-
-.rating {
-  background-color: #1CBCF8;
-}
-
-.avg-rating {
-  background-color: #1CBCF8;
-}
-
-.rating-count {
-  background-color: #1CBCF8;
 }

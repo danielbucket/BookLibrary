@@ -14,13 +14,8 @@ export default class Main extends Component {
       <div className='main'>
         <div className='search-results-container'>
           <Switch>
-
-            <Route exact path='/main/searchresults/:id' component={ProppedOneBook} />
-
-            <Route exact path='/main/searchresults' render={
-              (books) => <ProppedSearchResults book={books}/>
-            } />
-
+            <Route path='/main/searchresults/:id' component={ProppedOneBook} />
+            <Route exact path='/main/searchresults' component={ProppedSearchResults} />
           </Switch>
         </div>
       </div>

@@ -818,7 +818,6 @@ export const registeredUsersStub = [
 
 export const hackeyStub = {
         id:'',
-        library:{ read:false, want:false, own:false},
         volumeInfo:{  allowAnonLogging:false,
                       authors:['Gary','Billiam'],
                       canonicalVolumeLink:'',

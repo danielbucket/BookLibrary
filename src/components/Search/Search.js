@@ -5,7 +5,7 @@ import  { searchStyle }         from './searchStyle';
 export default class Search extends Component {
   render() {
     const { searchBoxContainer, searchBoxTitle,
-            searchBits, searchInput } = searchStyle
+            searchBits, searchInput, submitBtn } = searchStyle
     return (
       <div style={searchBoxContainer}>
         <h3 style={searchBoxTitle}>Quick Search</h3>
@@ -14,7 +14,7 @@ export default class Search extends Component {
                  onChange={(e) => this.props.newFieldValue(e.target.value) } />
 
         <Link to='/main/searchresults'>
-          <button      style={searchBits}
+          <button      style={submitBtn}
                      onClick={ () => {
                        this.props.fetchBooks(this.props.oldFieldValue)
                        this.props.resetFieldValue('')

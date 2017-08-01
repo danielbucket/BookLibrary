@@ -1,20 +1,23 @@
 import  { connect }             from 'react-redux';
 import    LogInRegisterModal    from '../../components/LogInRegisterModal/LogInRegisterModal';
 import  { withRouter }          from 'react-router';
-import  { fetchRegisteredUsers,
+import  { fetchUser,
           modalState }          from '../../actions/actions';
 
 
 const mapStateToProps = state => {
   return {
-    recievedUserData: state.logInRegisteredUserReducer
+    recievedUserData: state.logInRegisteredUserReducer,
+    modalState: state.modalState,
+    logInType:  state.logInTypeReducer,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    modalState: value => dispatch(modalState(value))
+    modalStateSwitch: value => dispatch(modalState(value)),
+    login:            data  => dispatch(fetchUser(data))
   }
 }
 
-export const ProppedLogInRegisterModal = withRouter(connect(mapStateToProps, null)(LogInRegisterModal));
+export const ProppedLogInRegisterModal = withRouter(connect(mapStateToProps, mapDispatchToProps)(LogInRegisterModal));
