@@ -55,51 +55,27 @@ export const cleanUserLibrary = (library) => {
 
 export const fetchUserLibrary = (userdata) => {
   return dispatch => {
-    new fetchCalls().fetchUsersLibrary(userdata)
+    new fetchCalls().fetchUserLibrary(userdata)
     .then( library => {
       dispatch(cleanUserLibrary(library))
     })
   }
 }
 
-
-export const fetchUser = (userData) => {
-    return dispatch => {
-		fetch('https://localhost4400/bucketLibrary/v1/getuser', {
-        method: "POST",
-        body: JSON.stringify(userData),
-        headers: { "Content-Type": "application/json" }
-    })
-		.then(res => res.json())
-      	.then(data => {
-        console.log(data)
-        dispatch(loginStatus(true))
-        dispatch(fetchUserLibrary(data))
-      })
-    }
-  }
-
-
-
-
-
+const prepUserDataForLibraryFetch = (userData) => {
+  return Object.assign({}, {user_id: userData.id})
+}
 
 // log in existing user
-// export const fetchUser = (userData) => {
-//   return dispatch => {
-//     return new fetchCalls().fetchRegisteredUser(userData)
-//     .then(data => {
-//       dispatch(loginStatus(true))
-//       dispatch(fetchUserLibrary(userData))
-//     })
-//   }
-// }
-
-
-
-
-
-
+export const fetchUser = userData => {
+  return dispatch => {
+    return new fetchCalls().fetchRegisteredUser(userData)
+    .then(data => {
+      dispatch(loginStatus(true))
+      dispatch(fetchUserLibrary(Object.assign({},{user_id: data.id})))
+    })
+  }
+}
 
 
 

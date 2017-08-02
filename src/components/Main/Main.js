@@ -9,7 +9,6 @@ import                                 './Main.css';
 export default class Main extends Component {
 
   render() {
-    const { books, book } = this.props
     return (
       <div className='main'>
         <div className='search-results-container'>
