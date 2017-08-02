@@ -24,7 +24,6 @@ const OneBook = ({  book, user, changeModalState,
 
   return (
     <div className='one-book-box'>
-     <ProppedLogInRegisterModal />
      <header className='one-book-title-container'>
        <h5 className='one-book-title'>{title}</h5>
        <h3 className='on-book-sub-title'>{subtitle}</h3>

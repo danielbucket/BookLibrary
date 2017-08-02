@@ -7,6 +7,7 @@ import  { fetchRegisteredUsers,
 import  { registerNewUser,
           changeModalState }              from '../../assets/helpers';
 import                                         './App.css';
+import  { ProppedLogInRegisterModal } from '../../containers/LogInRegisterModal/LogInRegisterModalContainer'
 
 
 class App extends Component {
@@ -19,8 +20,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <ProppedHeader />
-          <ProppedMain />
+        <ProppedLogInRegisterModal />
+        <ProppedHeader />
+        <ProppedMain />
       </div>
     )
   }

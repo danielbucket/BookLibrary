@@ -1,7 +1,6 @@
 import    React, { Component }  from 'react';
 import  { Route }               from 'react-router-dom';
-import  { modalStyle,
-          backdropStyle }       from './LogInRegisterModalCSS';
+import  { modalStyle }          from './LogInRegisterModalStyle';
 import    LogInUser             from '../LogInUser/LogInUser';
 import    RegisterNewUser       from '../RegisterNewUser/RegisterNewUser';
 
@@ -50,7 +49,11 @@ export default class LogInRegisterModal extends Component {
 
 
   render() {
-    const { modalState, logInType, loggedInStatus } = this.props
+    const { modalState, logInType, loggedInStatus, modalStateSwitch } = this.props
+    const { modalContainer, backdropStyle,
+            loginBox, buttonBox, top,
+            buttonContainer, closeModalBtnBox,
+            closeModalBtn, modalInput, loginButton } = modalStyle
     let renderStyle;
 
     if (!modalState) {
@@ -59,18 +62,30 @@ export default class LogInRegisterModal extends Component {
 
 
     const loginRender = (
-      <div>
-        <h4>Email:<input  type='email'
-                          value={this.state.email}
-                          onChange={e => this.onChange(e,'email')}/></h4>
-        <h4>Password:<input type='password'
-                            value={this.state.password}
-                            onChange={e => this.onChange(e,'password')}/></h4>
-
-        <button onClick={() => {this.loginUser()} //WRONG!!
-
-                            }>Log In</button>
+      <div style={loginBox}>
+        <div style={top}>
+          <div style={buttonBox}>
+            <input  type='email'
+                    style={modalInput}
+                    placeholder='enter email'
+                    value={this.state.email}
+                    onChange={e => this.onChange(e,'email')}/>
+            <input  type='password'
+                    style={modalInput}
+                    placeholder='enter password'
+                    value={this.state.password}
+                    onChange={e => this.onChange(e,'password')}/>
+            <button style={loginButton}
+                    onClick={() => {this.loginUser()}}>Log In</button>
+          </div>
+        <div style={closeModalBtnBox}>
+          <button  style={closeModalBtn}
+                  onClick={() => modalStateSwitch(false)}>X</button>
+        </div>
       </div>
+      <div>
+      </div>
+    </div>
     )
 
     // const registerRender = (
@@ -95,7 +110,7 @@ export default class LogInRegisterModal extends Component {
 
     return (
       <section>
-        <div style={modalStyle}>
+        <div style={modalContainer}>
           {loginRender}
         </div>
         <div style={backdropStyle}></div>

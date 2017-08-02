@@ -17,24 +17,31 @@ export default class fetchCalls {
       .catch(error => console.log('Error fetching books: ', error))
   }
 
-
-
-
-
-
- fetchRegisteredUser(userData) {
-    fetch('https://localhost4400/bucketLibrary/v1/getuser', {
-      method: "POST",
-      body: userData,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(resp => resp.json())
-    .then(data => {return data})
-    .catch(error => console.log('Grandadys tits! There was an error fetching user for login: ', error))
-    // ^^ this catch is the result of everything I try
+  fetchRegisteredUser(userData) {
+ 	return fetch('https://localhost4400/bucketLibrary/v1/getuser', {
+         method: "POST",
+         body: JSON.stringify(userData),
+         headers: { "Content-Type": "application/json" }
+     })
+     .then(resp => resp.json())
+     .catch(error => console.log(error))
   }
+
+
+
+ // fetchRegisteredUser(userData) {
+ //    fetch('https://localhost4400/bucketLibrary/v1/getuser', {
+ //      method: "POST",
+ //      body: userData,
+ //      headers: {
+ //        "Content-Type": "application/json"
+ //      }
+ //    })
+ //    .then(resp => resp.json())
+ //    .then(data => {return data})
+ //    .catch(error => console.log('Grandadys tits! There was an error fetching user for login: ', error))
+ //    // ^^ this catch is the result of everything I try
+ //  }
 
 
 

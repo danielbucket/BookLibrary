@@ -63,7 +63,21 @@ export const fetchUserLibrary = (userdata) => {
 }
 
 
-
+export const fetchUser = (userData) => {
+    return dispatch => {
+		fetch('https://localhost4400/bucketLibrary/v1/getuser', {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: { "Content-Type": "application/json" }
+    })
+		.then(res => res.json())
+      	.then(data => {
+        console.log(data)
+        dispatch(loginStatus(true))
+        dispatch(fetchUserLibrary(data))
+      })
+    }
+  }
 
 
 
@@ -71,15 +85,15 @@ export const fetchUserLibrary = (userdata) => {
 
 
 // log in existing user
-export const fetchUser = (userData) => {
-  return dispatch => {
-    return new fetchCalls().fetchRegisteredUser(userData)
-    .then(data => {
-      dispatch(loginStatus(true))
-      dispatch(fetchUserLibrary(userData))
-    })
-  }
-}
+// export const fetchUser = (userData) => {
+//   return dispatch => {
+//     return new fetchCalls().fetchRegisteredUser(userData)
+//     .then(data => {
+//       dispatch(loginStatus(true))
+//       dispatch(fetchUserLibrary(userData))
+//     })
+//   }
+// }
 
 
 

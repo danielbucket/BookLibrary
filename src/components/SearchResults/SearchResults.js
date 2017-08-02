@@ -9,35 +9,28 @@ const SearchResults = ({books, acquireBook}) => {
     const { volumeInfo } = i
 
     return (
-      <Link to={`/main/searchresults/${i.id}`}
+      <Link className='book-card'
+            to={`/main/searchresults/${i.id}`}
             key={uuidv4()}
             onClick={acquireBook(i)} >
         <h2 className="book-title">{ volumeInfo.title }</h2>
         <div className="book-author-text">Author:
-          <span className='authors-list'>
+          <span className='authors-list title'>
             { renderMultiple(volumeInfo.authors,'authors-container, author-item') }
           </span>
         </div>
         <div>
           <p className='publish-date-text'>Publish Date:
-            <span className='publish-date'>
+            <span className='publish-date title'>
               { volumeInfo.publishedDate }
             </span>
           </p>
           <p className="book-publisher-text">Publisher:
-            <span className='publisher'>
+            <div className='publisher title'>
               { volumeInfo.publisher }
-            </span>
+            </div>
           </p>
           <div className='rating'>
-            <div className='rating'>Average Rating:
-              <span className='avg-rating'>
-                {volumeInfo.averageRating}
-              </span>
-              <span className='rating-count'>Out of:
-                {volumeInfo.ratingsCount}
-              </span>
-            </div>
           </div>
         </div>
       </Link>
