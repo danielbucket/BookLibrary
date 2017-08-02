@@ -15,6 +15,7 @@ export default class LogInRegisterModal extends Component {
       }
     this.onChange = this.onChange.bind(this)
     this.loginUser = this.loginUser.bind(this)
+    this.registerUser = this.registerUser.bind(this)
   }
 
   onChange(e, type) {
@@ -24,12 +25,27 @@ export default class LogInRegisterModal extends Component {
   }
 
   loginUser() {
-    const userData = {
+    const loginData = {
       email: this.state.email,
-      pasword: this.state.password
+      password: this.state.password
     }
 
-    this.props.login(userData)
+    this.props.login(loginData)
+  }
+
+  registerUser() {
+    const registerData = {
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password
+    }
+
+// need to send this package to the server
+    this.setState({
+      email: '',
+      ysername: '',
+      password: ''
+    })
   }
 
 
@@ -41,26 +57,46 @@ export default class LogInRegisterModal extends Component {
       return null
     }
 
-    if (logInType === 'login') {
-      renderStyle = (
-        <div>
-          <h4>Email:<input  type='email'
-                            value={this.state.email}
-                            onChange={e => this.onChange(e,'email')}/></h4>
-          <h4>Password:<input type='password'
-                              value={this.state.password}
-                              onChange={e => this.onChange(e,'password')}/></h4>
-          <button onClick={() => {  this.loginUser()
-                                  }
-                              }>Log In</button>
-        </div>
-      )
-    }
+
+    const loginRender = (
+      <div>
+        <h4>Email:<input  type='email'
+                          value={this.state.email}
+                          onChange={e => this.onChange(e,'email')}/></h4>
+        <h4>Password:<input type='password'
+                            value={this.state.password}
+                            onChange={e => this.onChange(e,'password')}/></h4>
+
+        <button onClick={() => {this.loginUser()} //WRONG!!
+
+                            }>Log In</button>
+      </div>
+    )
+
+    // const registerRender = (
+    //   <div>
+    //     <div>
+    //       <h4>Email:<input  type='email'
+    //                         value={this.state.email}
+    //                         onChange={e => this.onChange(e,'email')}/></h4>
+    //       <h4>Password:<input type='password'
+    //                           value={this.state.password}
+    //                           onChange={e => this.onChange(e,'password')}/></h4>
+    //       <h4>User Name:<input  type='username'
+    //                             value={this.state.username}
+    //                             onChange={e => this.onChange(e, 'username')/></h4>
+    //       <button onClick={() => {  this.loginUser()
+    //                               }
+    //                           }>Log In</button>
+    //     </div>
+    //   </div>
+    // )
+
 
     return (
       <section>
         <div style={modalStyle}>
-          {renderStyle}
+          {loginRender}
         </div>
         <div style={backdropStyle}></div>
       </section>

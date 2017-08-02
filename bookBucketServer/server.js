@@ -64,15 +64,30 @@ app.get('/bucketLibrary/v1/library', (request, response) => {
   .catch(error => response.status(500).json({ error }))
 })
 
-// login / verify entered user data exists in database
+
+
+
+
+
+
+
+// the request isnt making it this far
 app.post('/bucketLibrary/v1/getuser', (request, response) => {
   //checks out
+  console.log('so triggered right now')
+  // ^^ this log is not happening
   db('users')
   .where({email: request.body.email, password: request.body.password})
   .select('id', 'email', 'username')
   .then(user => response.status(200).json({ user: user[0]}))
   .catch(error => response.status(500).json({ error }))
   })
+
+
+
+
+
+
 
 
 // retrieve all books from library database that satisfy

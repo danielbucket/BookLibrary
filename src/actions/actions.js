@@ -1,19 +1,22 @@
 import    fetchCalls      from '../assets/fetches/fetchCalls';
 import  { reduceLibrary } from '../assets/helpers';
 
+// having data default to an empty array is an short term fix
+// the search submit button should be rendered inert unless it the search
+// field has a value
+export const fetchBooksSuccess = (data=[]) => {
+  return {
+    type: 'FETCH_BOOKS_SUCCESS',
+    books: data
+  }
+}
+
 export const fetchBook = (query) => {
   return dispatch => {
     new fetchCalls().fetchBooks(query)
     .then(data => {
       dispatch(fetchBooksSuccess(data))
     })
-  }
-}
-
-export const fetchBooksSuccess = (data) => {
-  return {
-    type: 'FETCH_BOOKS_SUCCESS',
-    books: data
   }
 }
 
@@ -27,19 +30,6 @@ export const viewSingleBook = (bookData) => {
 export const acquireSingleBook = (book) => {
   return dispatch => {
     dispatch(viewSingleBook(book))
-  }
-}
-
-export const newFieldValue = (input) => {
-  return {
-    type: "NEW_FIELD_VALUE",
-    input: input
-  }
-}
-
-export const resetFieldValue = (input) => {
-  return dispatch => {
-    dispatch(newFieldValue(input))
   }
 }
 
@@ -72,16 +62,42 @@ export const fetchUserLibrary = (userdata) => {
   }
 }
 
+
+
+
+
+
+
+
+
+// log in existing user
 export const fetchUser = (userData) => {
-  console.log(userData)
   return dispatch => {
-    new fetchCalls().fetchRegisteredUser(userData)
+    return new fetchCalls().fetchRegisteredUser(userData)
     .then(data => {
       dispatch(loginStatus(true))
       dispatch(fetchUserLibrary(userData))
     })
   }
 }
+
+
+
+
+
+
+
+
+
+// register new user
+// export const registerNewUser = (userData) => {
+//   return dispatch => {
+//     new fetchCalls().createNewUser(userData)
+//     .then(data => {
+//       dispatch()
+//     }
+//   }
+// }
 
 export const modalState = (value) => {
   return {

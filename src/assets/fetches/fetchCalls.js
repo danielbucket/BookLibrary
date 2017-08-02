@@ -1,8 +1,8 @@
 // import  { logInUser }   from '../helpers';
 import  { createUser,
           logInUser }   from './fetchLocations';
-
 const uuidv4 = require('uuid/v4');
+
 
 export default class fetchCalls {
 
@@ -18,8 +18,12 @@ export default class fetchCalls {
   }
 
 
+
+
+
+
  fetchRegisteredUser(userData) {
-    return fetch(logInUser, {
+    fetch('https://localhost4400/bucketLibrary/v1/getuser', {
       method: "POST",
       body: userData,
       headers: {
@@ -27,8 +31,15 @@ export default class fetchCalls {
       }
     })
     .then(resp => resp.json())
-    .then(data => data)
+    .then(data => {return data})
+    .catch(error => console.log('Grandadys tits! There was an error fetching user for login: ', error))
+    // ^^ this catch is the result of everything I try
   }
+
+
+
+
+
 
 
 
