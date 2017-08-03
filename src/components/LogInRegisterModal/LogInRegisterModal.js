@@ -1,16 +1,16 @@
 import    React, { Component }  from 'react';
-import  { Route }               from 'react-router-dom';
 import  { modalStyle }          from './LogInRegisterModalStyle';
 import    LogInUser             from '../LogInUser/LogInUser';
 import    RegisterNewUser       from '../RegisterNewUser/RegisterNewUser';
+
 
 export default class LogInRegisterModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: "33",
-      username: '33',
-      password: '33'
+      email: "",
+      username: '',
+      password: ''
       }
     this.onChange = this.onChange.bind(this)
     this.loginUser = this.loginUser.bind(this)
@@ -42,26 +42,33 @@ export default class LogInRegisterModal extends Component {
   }
 
   registerUser() {
-    const registerData = {
-      email: this.state.email,
-      username: this.state.username,
-      password: this.state.password
-    }
+    // const registerData = {
+    //   email: this.state.email,
+    //   username: this.state.username,
+    //   password: this.state.password
+    // }
 
 // need to send this package to the server
     // this.props.register(registerData)
+    // this.props.loginStatus(false)
     this.clearState()
   }
 
 
   render() {
-    const { modalState, logInType, loggedInStatus, modalStateSwitch } = this.props
-    const { modalContainer, backdropStyle,
-            loginBox, buttonBox, top,
-            buttonContainer, closeModalBtnBox,
-            closeModalBtn, modalInput, loginButton } = modalStyle
+    const { modalState,
+      logInType, loggedInStatus,
+      modalStateSwitch
+    } = this.props
 
-    if (!modalState) {
+    const {
+      modalContainer, backdropStyle,
+      loginBox, buttonBox, top,
+      buttonContainer, closeModalBtnBox,
+      closeModalBtn, modalInput, loginButton
+    } = modalStyle
+
+    if (!this.props.modalState) {
       return null
     }
 
@@ -76,6 +83,9 @@ export default class LogInRegisterModal extends Component {
                 value={this.state.username}
                 onChange={e => this.onChange(e, 'username')}/>
       )
+    }
+    if (!modalState) {
+      return null
     }
 
     return (
@@ -102,7 +112,7 @@ export default class LogInRegisterModal extends Component {
               </div>
               <div style={closeModalBtnBox}>
                 <button style={closeModalBtn}
-                        onClick={() => modalStateSwitch(false)}>X</button>
+                        onClick={() => this.props.modalState(true)}>X</button>
               </div>
             </div>
           </div>

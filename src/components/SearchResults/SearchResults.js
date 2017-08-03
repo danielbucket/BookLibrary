@@ -13,22 +13,7 @@ const SearchResults = ({books, acquireBook}) => {
             to={`/main/searchresults/${i.id}`}
             key={uuidv4()}
             onClick={acquireBook(i)} >
-            <img src={image} />
-        <h2 className="book-title">{ volumeInfo.title }</h2>
-        <div className="book-author-text">Author:
-          <span className='authors-list title'>
-            { renderMultiple(volumeInfo.authors,'authors-container, author-item') }
-          </span>
-        </div>
-        <div>
-          <p className="book-publisher-text">Publisher:
-            <div className='publisher title'>
-              { volumeInfo.publisher }
-            </div>
-          </p>
-          <div className='rating'>
-          </div>
-        </div>
+        <img src={image} className='book-image'/>
       </Link>
     )
   })

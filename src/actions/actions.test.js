@@ -22,52 +22,71 @@ describe('should', () => {
     expect(actions.viewSingleBook(stub)).toEqual(expected)
   })
 
-  it('02: viewSingleBook should return a function', () => {
+  it('03: viewSingleBook should return a function', () => {
     const returnValue = actions.acquireSingleBook(hackeyStub)
 
     expect(typeof returnValue).toEqual('function')
   })
 
-  it('03: resetFieldValue shoul return a function', () => {
-    const returnValue = actions.resetFieldValue('a string')
+  it('04: loggedInStatus should return an expected object', () => {
+    const value = false
+    const expected = actions.loggedInStatus(value)
 
-    expect(typeof returnValue).toEqual('function')
+    expect(expected.type).toEqual("LOGGED_IN_STATUS")
+    expect(typeof expected.func).toEqual("function")
+    expect(expected.status).toEqual(value)
   })
 
-  it('04: newFieldValue should return an expected object', () => {
-    const input = 'a string'
-    const expected = {
-      type: "NEW_FIELD_VALUE",
-      input: input
-    }
+  xit('05: loggedInStatus should return a recursive function', () => {
+    const value = false
+    const returnedFunc = actions.loggedInStatus(value)
+    const doubleExpect = returnedFunc.func(value)
 
-    expect(actions.newFieldValue(input)).toEqual(expected)
+
+    expect(returnedFunc.func(value)).toEqual(doubleExpect)
+    expect(typeof returnedFunc.func).toEqual("function")
   })
 
-  it('05: loginStatus should return an expected object', () => {
-    const id = 2
-    const name= "hammerFace"
-    const user = {name: name, id: id}
-    const expected = actions.loginStatus(user)
-
-    expect(expected.type).toEqual("LOGIN_STATUS")
-    expect(expected.status).toEqual(user)
-  })
-
-  it('05: modalState should return an expected object', () => {
+  it('06: modalState should return an expected object', () => {
     const value = false
     const expected = actions.modalState(value)
 
+    expect(typeof expected.func).toEqual('function')
     expect(expected.type).toEqual('MODAL_STATE')
     expect(expected.value).toEqual(value)
   })
 
-  it('06: bookSavedToWantedLibrary should return an expected object', () => {
+  it('07: isResponseTrueYo should return an exected object with funciton',() => {
+    const value = true
+    const expected = actions.isResponseTrueYo(value)
+
+    expect(typeof expected.func).toEqual('function')
+    expect(expected.type).toEqual('IS_RESPONSE_TRUE_YO')
+    expect(expected.value).toEqual(value)
+  })
+
+  it('07: bookSavedToWantedLibrary should return an expected object', () => {
     const book = hackeyStub
     const expected = actions.bookSavedToWantedLibrary(hackeyStub)
 
     expect(expected.type).toEqual('BOOK_SAVED_TO_WANTED_LIBRARY')
     expect(expected.library).toEqual(book)
+  })
+
+  it('009: verifyUserIdent', () => {
+    const library = { book:{} }
+    const serverResp = { username:'3', password: 'noPunIntended', library: library }
+    const serverFeed = { username:'3', password: 'noPunIntended' }
+    const funkyFunc  = [  actions.isResponseTrueYo,
+                          actions.loggedInStatus,
+                          actions.modalState,
+                          actions.activeUserLibrary
+                        ]
+
+    const result = actions.verifyUserIdent(serverResp, serverFeed, funkyFunc)
+
+    // console.log('results', result)
+
   })
 
 })

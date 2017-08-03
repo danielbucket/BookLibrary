@@ -8,16 +8,17 @@ import  { fetchUser,
 const mapStateToProps = state => {
   return {
     recievedUserData: state.logInRegisteredUserReducer,
-    modalState: state.modalState,
-    logInType:  state.logInTypeReducer,
+    modalState:       state.modalState,
+    logInType:        state.logInTypeReducer,
+    loginStatus:      state.loginStatus
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    modalStateSwitch: value => dispatch(modalState(value)),
-    login:            data  => dispatch(fetchUser(data)),
-    register:         data  => dispatch()
+    modalState:       value     => dispatch(modalState(value)),
+    login:            data      => dispatch(fetchUser(data)),
+    register:         data      => dispatch()
   }
 }
 

@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
     addBookToWantedLibrary: (library, book) => dispatch(saveBookToWantedLibrary(library, book)),
     addBookToReadLibrary:   (library, book) => dispatch(saveBookToReadLibrary(library, book)),
     addBookToOwnedLibrary:  (library, book) => dispatch(saveBookToOwnedLibrary(library, book)),
-    logInType:              (value) => dispatch(logInType(value))
+    logInType:              (value)         => dispatch(logInType(value))
   }
 }
 

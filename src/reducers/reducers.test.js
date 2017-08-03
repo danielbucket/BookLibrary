@@ -2,7 +2,6 @@ import  { booksReducer }          from './booksReducer';
 import  { wantedLibraryReducer,
           readLibraryReducer,
           ownedLibraryReducer }   from './libraryReducer';
-import  { newFieldValueReducer }  from './newFieldValueReducer';
 import  { viewSingleBookReducer } from './viewSingleBookReducer';
 import    * as actions            from '../actions/actions';
 import  { hackeyStub }            from '../assets/stubs';
@@ -43,15 +42,6 @@ describe('ownedLibraryReducer', () => {
   })
 })
 
-describe('newFieldValueReducer', () => {
-  it('01: should return expected object', () => {
-    const state = []
-    const input = 'a string'
-    const actionResult = actions.newFieldValue(input)
-
-    expect(newFieldValueReducer(state, actionResult)).toEqual('a string')
-  })
-})
 
 describe('viewSingleBookReducer', () => {
   it('01: should return an expected result', () => {

@@ -2,7 +2,6 @@ import  { Link } from 'react-router-dom';
 import    React from 'react';
 import  { registeredUsersStub } from './stubs';
 
-
 const uuidv4 = require('uuid/v4');
 
 ///
@@ -79,7 +78,6 @@ export const userActiveOrInactiveSwitch = ( loggedInStatus, book,
 export const reduceLibrary = (library) => {
   console.log(library)
 }
-
 
 
 
