@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    modalState:       value     => dispatch(modalState(value)),
+    modalStateSwitch: value     => dispatch(modalState(value)),
     login:            data      => dispatch(fetchUser(data)),
     register:         data      => dispatch()
   }

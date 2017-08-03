@@ -5,8 +5,8 @@ import  { reduceLibrary } from '../assets/helpers';
 // the search submit button should be rendered inert unless it the search
 // field has a value
 
-// export const fetchBooksSuccess = (data=[]) => {
-export const fetchBooksSuccess = (data) => {
+// export const fetchBooksSuccess = (data) => {
+export const fetchBooksSuccess = (data=[]) => {
   return {
     type: 'FETCH_BOOKS_SUCCESS',
     books: data
@@ -37,7 +37,6 @@ export const acquireSingleBook = (book) => {
 
 
 export const activeUserLibrary = (library) => {
-  console.log(activeUserLibrary)
   return {
     type: "ACTIVE_USER_LIBRARY",
     library: library,
@@ -86,7 +85,6 @@ export const fetchUser = userData => {
       dispatch(loggedInStatus(true))
       dispatch(fetchUserLibrary(Object.assign({},{user_id: data.id})))
     })
-    .then()
   }
 }
 
@@ -103,7 +101,6 @@ export const fetchUser = userData => {
 // }
 
 export const modalState = (value) => {
-  console.log('modalState action')
   return {
     type: "MODAL_STATE",
     value: value,
@@ -112,7 +109,6 @@ export const modalState = (value) => {
 }
 
 export const isResponseTrueYo = (value) => {
-  console.log('IS_RESPONSE_TRUE_YO')
   return {
     type: "IS_RESPONSE_TRUE_YO",
     value: value,
@@ -202,43 +198,6 @@ export const saveBookToOwnedLibrary = (library, bookObj) => {
   }
 }
 
-// THIS NEEDS TO BE A SORT OF 'REDUCER' ACTION !!!
-// IT WILL BE THE LAST METHOD CALLED BY THE FETCHUSER ACTION  !!!
-export const verifyUserIdent = (serverResp, serverFeed, funkyFunc) => {
-  // serverResp expected as {id: 'a number'}
-  // serverFeed expected as {email:'', username:'',password:''}
-  // EXPECT serverResp.library to be user library
-  // funkyFunc expected as an array of actions
-
-  if (serverResp.username === serverFeed.username
-      &&
-      serverResp.password === serverFeed.password) {
-      // setTimeout(funkyFunc([serverResp, serverFeed]), 3000)
-      // ^^ use this as a spacce of time to show off a loader, like a gighy Nacho shouting to the kids to 'go read a book!'
-    return funkyFunc.forEach( daFunk => {
-
-      switch (daFunk.type) {
-        // I dont think I'll need this but I'll hold onto it for now 8/3
-        case "IS_RESPONSE_TRUE_YO":
-          return daFunk(true).func(true)
-
-        case "LOGGED_IN_STATUS":
-          return daFunk(true).func(true)
-
-        case "MODAL_STATE":
-          return daFunk(false).func(false)
-
-        case "ACTIVE_USER_LIBRARY":
-          return daFunk.func(serverResp.library)
-
-        default:
-          return null
-      }
-    })
-  }
-
-  return null
-}
 
 
 

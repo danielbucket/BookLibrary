@@ -38,6 +38,7 @@ export default class LogInRegisterModal extends Component {
       password: this.state.password
     }
     this.props.login(loginData)
+    this.props.modalStateSwitch(false)
     this.clearState()
   }
 
@@ -56,9 +57,13 @@ export default class LogInRegisterModal extends Component {
 
 
   render() {
-    const { modalState,
-      logInType, loggedInStatus,
-      modalStateSwitch
+    if (!this.props.modalState) {
+      return null
+    }
+
+    const {
+      modalState, logInType,
+      loggedInStatus
     } = this.props
 
     const {
@@ -67,10 +72,6 @@ export default class LogInRegisterModal extends Component {
       buttonContainer, closeModalBtnBox,
       closeModalBtn, modalInput, loginButton
     } = modalStyle
-
-    if (!this.props.modalState) {
-      return null
-    }
 
     let usernameInput = null
     let scrambledEggs = "Log In"
@@ -83,9 +84,6 @@ export default class LogInRegisterModal extends Component {
                 value={this.state.username}
                 onChange={e => this.onChange(e, 'username')}/>
       )
-    }
-    if (!modalState) {
-      return null
     }
 
     return (
@@ -112,7 +110,9 @@ export default class LogInRegisterModal extends Component {
               </div>
               <div style={closeModalBtnBox}>
                 <button style={closeModalBtn}
-                        onClick={() => this.props.modalState(true)}>X</button>
+                        onClick={
+                          () => this.props.modalState(false)
+                        }>X</button>
               </div>
             </div>
           </div>

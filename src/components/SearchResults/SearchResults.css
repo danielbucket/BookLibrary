@@ -17,6 +17,11 @@
   grid-template-rows: 50% 50%;
   grid-gap: 1px;
   width: 100%;
+  overflow-x: scroll;
+}
+
+.book-cards-container::-webkit-scrollbar {
+  display: none;
 }
 
 .book-card {

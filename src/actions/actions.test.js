@@ -73,20 +73,4 @@ describe('should', () => {
     expect(expected.library).toEqual(book)
   })
 
-  it('009: verifyUserIdent', () => {
-    const library = { book:{} }
-    const serverResp = { username:'3', password: 'noPunIntended', library: library }
-    const serverFeed = { username:'3', password: 'noPunIntended' }
-    const funkyFunc  = [  actions.isResponseTrueYo,
-                          actions.loggedInStatus,
-                          actions.modalState,
-                          actions.activeUserLibrary
-                        ]
-
-    const result = actions.verifyUserIdent(serverResp, serverFeed, funkyFunc)
-
-    // console.log('results', result)
-
-  })
-
 })

@@ -2,12 +2,11 @@
   border: 1px solid red;
   display: grid;
   grid-row-template: 20% 20% 20% 20% 20%;
-  background-color: lightgrey;
+  opacity: 13;
 }
 
 .one-book-title-container {
-  border: 1px solid red;
-  margin: 0;
+  margin: .5;
   width: 300px;
 }
 

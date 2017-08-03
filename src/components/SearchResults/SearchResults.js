@@ -8,6 +8,7 @@ const SearchResults = ({books, acquireBook}) => {
   const query = books.map( i => {
     const { volumeInfo } = i
     const image = volumeInfo.imageLinks.thumbnail
+    
     return (
       <Link className='book-card'
             to={`/main/searchresults/${i.id}`}
