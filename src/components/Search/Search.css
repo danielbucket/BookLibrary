@@ -1,0 +1,28 @@
+.search-box-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.search-box-title {
+  font-size: 24px;
+  background-color: #1CBCF8;
+  border-radius: 5px;
+}
+
+.search-bits {
+  height: 20px;
+  width: 150px;
+  border: none;
+}
+
+.search-input {
+  background-color: #1cbcf8;
+}
+
+.submit-btn {
+  border: none;
+  background-color: #1cbcf8;
+  width: 150px;
+}

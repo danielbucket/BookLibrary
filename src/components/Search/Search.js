@@ -1,6 +1,6 @@
 import    React, { Component }  from 'react';
 import  { Link }                from 'react-router-dom';
-import  { searchStyle }         from './searchStyle';
+import                               './Search.css'
 
 export default class Search extends Component {
   constructor(props) {
@@ -9,29 +9,38 @@ export default class Search extends Component {
       query: ''
     }
     this.onChange = this.onChange.bind(this)
+    this.submit   = this.submit.bind(this)
   }
 
-onChange(e) {
-  this.setState({
-    query: e.target.value
-  })
-}
+  onChange(e) {
+    this.setState({
+      query: e.target.value
+    })
+  }
+
+  submit() {
+    this.props.fetchBooks(this.state.query)
+    this.setState({
+      query: ''
+    })
+  }
 
   render() {
-    const { searchBoxContainer, searchBoxTitle,
-            searchBits, searchInput, submitBtn } = searchStyle
     return (
-      <div style={searchBoxContainer}>
-        <h3 style={searchBoxTitle}>Quick Search</h3>
-        <input      style={searchBits, searchInput}
+      <div className='search-box-container'>
+          <h3 className='search-box-title'>
+            Quick Search
+          </h3>
+        <input  className='search-bits search-input'
+              placeholder='search for a book'
                     value={this.state.query}
                  onChange={e => this.onChange(e)} />
 
         <Link to='/main/searchresults'>
-          <button      style={submitBtn}
-                     onClick={() => {
-                       this.props.fetchBooks(this.state.query)
-                    }}>Submit
+          <button className='submit-btn'
+                  onClick={() => {
+                     this.submit()
+                  }}>Submit
           </button>
         </Link>
       </div>

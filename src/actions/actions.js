@@ -89,7 +89,6 @@ export const fetchUser = userData => {
 }
 
 
-
 // register new user
 // export const registerNewUser = (userData) => {
 //   return dispatch => {

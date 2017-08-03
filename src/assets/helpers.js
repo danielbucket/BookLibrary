@@ -52,13 +52,13 @@ export const userActiveOrInactiveSwitch = ( loggedInStatus, book,
                                             logInType ) => {
   if (!loggedInStatus) {
     return (
-      <div>
-      <button onClick={() => {
+      <div className='log-in-register-btn-box'>
+      <button className='log-in-register-btn' onClick={() => {
         modalState(true)
         logInType('login')
       }}>Sign In</button>
 
-      <button onClick={() => {
+      <button className='log-in-register-btn register-btn' onClick={() => {
         modalState(true)
         logInType('register')
       }}>Register</button>

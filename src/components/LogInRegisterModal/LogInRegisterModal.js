@@ -111,7 +111,7 @@ export default class LogInRegisterModal extends Component {
               <div style={closeModalBtnBox}>
                 <button style={closeModalBtn}
                         onClick={
-                          () => this.props.modalState(false)
+                          () => this.props.modalStateSwitch(false)
                         }>X</button>
               </div>
             </div>

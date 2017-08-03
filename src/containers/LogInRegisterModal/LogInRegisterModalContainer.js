@@ -1,5 +1,6 @@
 import  { connect }             from 'react-redux';
 import    LogInRegisterModal    from '../../components/LogInRegisterModal/LogInRegisterModal';
+
 import  { withRouter }          from 'react-router';
 import  { fetchUser,
           modalState }          from '../../actions/actions';
