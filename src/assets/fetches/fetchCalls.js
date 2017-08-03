@@ -1,6 +1,8 @@
 // import  { logInUser }   from '../helpers';
 import  { createUser,
-          logInUser }   from './fetchLocations';
+          logInUser,
+          userLibrary,
+          googleAPI   }   from './fetchLocations';
 const uuidv4 = require('uuid/v4');
 
 
@@ -8,7 +10,7 @@ export default class fetchCalls {
 
 
   fetchBooks(query) {
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+    return fetch(`${googleAPI}${query}`)
       .then(resp => resp.json())
       .then(bookData => {
         return bookData.items.map( item => {
@@ -19,7 +21,7 @@ export default class fetchCalls {
   }
 
   fetchRegisteredUser(userData) {
-   	return fetch('http://localhost:4400/bucketLibrary/v1/getuser', {
+   	return fetch(logInUser, {
                  method: "POST",
                  body: JSON.stringify(userData),
                  headers: { "Content-Type": "application/json" }
@@ -29,7 +31,7 @@ export default class fetchCalls {
   }
 
   fetchUserLibrary(userData) {
-    return fetch('http://localhost:4400/bucketLibrary/v1/user/library', {
+    return fetch(userLibrary, {
                 method: "POST",
                 body: JSON.stringify(userData),
                 headers: { "Content-Type": "application/json"}
@@ -38,7 +40,7 @@ export default class fetchCalls {
             .catch(error => console.log('error fetching user library:', error))
   }
 
-  createNewUser(userObj, mainState) {
+  createNewUser(userObj) {
     return fetch(createUser, {
       method: "POST",
       body: JSON.stringify(userObj),
