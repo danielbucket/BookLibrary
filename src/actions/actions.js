@@ -1,19 +1,24 @@
 import    fetchCalls      from '../assets/fetches/fetchCalls';
 import  { reduceLibrary } from '../assets/helpers';
 
+// having data default to an empty array is an short term fix
+// the search submit button should be rendered inert unless it the search
+// field has a value
+
+// export const fetchBooksSuccess = (data) => {
+export const fetchBooksSuccess = (data=[]) => {
+  return {
+    type: 'FETCH_BOOKS_SUCCESS',
+    books: data
+  }
+}
+
 export const fetchBook = (query) => {
   return dispatch => {
     new fetchCalls().fetchBooks(query)
     .then(data => {
       dispatch(fetchBooksSuccess(data))
     })
-  }
-}
-
-export const fetchBooksSuccess = (data) => {
-  return {
-    type: 'FETCH_BOOKS_SUCCESS',
-    books: data
   }
 }
 
@@ -30,30 +35,12 @@ export const acquireSingleBook = (book) => {
   }
 }
 
-export const newFieldValue = (input) => {
-  return {
-    type: "NEW_FIELD_VALUE",
-    input: input
-  }
-}
-
-export const resetFieldValue = (input) => {
-  return dispatch => {
-    dispatch(newFieldValue(input))
-  }
-}
-
-export const loginStatus = (user) => {
-  return {
-    type: "LOGIN_STATUS",
-    status: user
-  }
-}
 
 export const activeUserLibrary = (library) => {
   return {
     type: "ACTIVE_USER_LIBRARY",
-    library: library
+    library: library,
+    func: (library) => activeUserLibrary(library)
   }
 }
 
@@ -65,28 +52,67 @@ export const cleanUserLibrary = (library) => {
 
 export const fetchUserLibrary = (userdata) => {
   return dispatch => {
-    new fetchCalls().fetchUsersLibrary(userdata)
+    new fetchCalls().fetchUserLibrary(userdata)
     .then( library => {
       dispatch(cleanUserLibrary(library))
     })
   }
 }
 
-export const fetchUser = (userData) => {
-  console.log(userData)
+const prepUserDataForLibraryFetch = (userData) => {
+  return Object.assign({}, {user_id: userData.id})
+}
+
+export const loggedInStatus = (value) => {
+  return {
+    type: "LOGGED_IN_STATUS",
+    status: value,
+    func: value => loggedInStatus(value)
+  }
+}
+
+export const determineLoggedInStatus = (input) => {
   return dispatch => {
-    new fetchCalls().fetchRegisteredUser(userData)
+    dispatch(loggedInStatus(input))
+  }
+}
+
+// log in existing user
+export const fetchUser = userData => {
+  return dispatch => {
+    return new fetchCalls().fetchRegisteredUser(userData)
     .then(data => {
-      dispatch(loginStatus(true))
-      dispatch(fetchUserLibrary(userData))
+      dispatch(loggedInStatus(true))
+      dispatch(fetchUserLibrary(Object.assign({},{user_id: data.id})))
     })
   }
 }
 
+
+
+// register new user
+// export const registerNewUser = (userData) => {
+//   return dispatch => {
+//     new fetchCalls().createNewUser(userData)
+//     .then(data => {
+//       dispatch()
+//     }
+//   }
+// }
+
 export const modalState = (value) => {
   return {
     type: "MODAL_STATE",
-    value: value
+    value: value,
+    func: (value) => modalState(value)
+  }
+}
+
+export const isResponseTrueYo = (value) => {
+  return {
+    type: "IS_RESPONSE_TRUE_YO",
+    value: value,
+    func: (value) => isResponseTrueYo(value)
   }
 }
 
@@ -172,18 +198,16 @@ export const saveBookToOwnedLibrary = (library, bookObj) => {
   }
 }
 
-export const loggedInStatus = (input) => {
-  return {
-    type: "LOGGED_IN_STATUS",
-    status: input
-  }
-}
 
-export const determineLoggedInStatus = (input) => {
-  return dispatch => {
-    dispatch(loggedInStatus(input))
-  }
-}
+
+
+
+
+
+
+
+
+
 
 
 

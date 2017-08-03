@@ -1,12 +1,8 @@
 import    React, { Component }            from 'react';
-import  { Route, Router }                 from 'react-router'
 import  { ProppedHeader }                 from '../../containers/Header/HeaderContainer';
 import  { ProppedMain }                   from '../../containers/Main/MainContainer';
-import  { fetchRegisteredUsers,
-          createNewUser }                 from '../../assets/fetches/fetchCalls';
-import  { registerNewUser,
-          changeModalState }              from '../../assets/helpers';
 import                                         './App.css';
+import  { ProppedLogInRegisterModal } from '../../containers/LogInRegisterModal/LogInRegisterModalContainer'
 
 
 class App extends Component {
@@ -19,8 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <ProppedHeader />
-          <ProppedMain />
+        <ProppedLogInRegisterModal />
+        <ProppedHeader />
+        <ProppedMain />
       </div>
     )
   }

@@ -13,11 +13,9 @@ import    thunk                 from 'redux-thunk';
 // import  { routerMiddleware }    from 'react-router-redux';
 
 import createHistory            from 'history/createBrowserHistory'
-import { Route, browserHistory } from 'react-router-dom'
+import { Route }                from 'react-router-dom'
 import { ConnectedRouter,
-         routerMiddleware,
-         push }                  from 'react-router-redux'
-import { fetchBook }             from './actions/actions'
+         routerMiddleware }     from 'react-router-redux'
 
 const devTools        = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 const history         = createHistory()

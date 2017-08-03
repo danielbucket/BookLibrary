@@ -1,0 +1,16 @@
+.one-book-box {
+  border: 1px solid red;
+  display: grid;
+  grid-row-template: 20% 20% 20% 20% 20%;
+  opacity: 13;
+}
+
+.one-book-title-container {
+  margin: .5;
+  width: 300px;
+}
+
+.one-book-title {
+  font-size: 20px;
+  margin: 10px auto;
+}

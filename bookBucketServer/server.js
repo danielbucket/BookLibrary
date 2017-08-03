@@ -64,7 +64,7 @@ app.get('/bucketLibrary/v1/library', (request, response) => {
   .catch(error => response.status(500).json({ error }))
 })
 
-// login / verify entered user data exists in database
+// the request isnt making it this far
 app.post('/bucketLibrary/v1/getuser', (request, response) => {
   //checks out
   db('users')
@@ -74,11 +74,11 @@ app.post('/bucketLibrary/v1/getuser', (request, response) => {
   .catch(error => response.status(500).json({ error }))
   })
 
-
 // retrieve all books from library database that satisfy
 // the value of request.body
 app.post('/bucketLibrary/v1/user/library', (request,response) => {
   // checks out
+  console.log(request.body)
   db('library').where(request.body)
     .select()
     .then(data => response.status(200).json({data}))

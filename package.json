@@ -34,6 +34,7 @@
     "eslint-plugin-import": "^2.7.0",
     "fetch-mock": "^5.12.1",
     "identity-obj-proxy": "^3.0.0",
+    "locus": "^2.0.1",
     "nodemon": "^1.11.0",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
@@ -50,5 +51,5 @@
       "\\.(css|less)$": "identity-obj-proxy"
     }
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:4400"
 }
